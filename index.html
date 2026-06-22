@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W杯2026 視聴ガイド</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CjxkZWZzPjxjbGlwUGF0aCBpZD0iciI+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIHJ5PSIxMTIiLz48L2NsaXBQYXRoPjwvZGVmcz4KPGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9IiMwQjFGM0EiLz4KPGVsbGlwc2UgY3g9IjI1NiIgY3k9IjQ4MCIgcng9IjMwMCIgcnk9IjE2MCIgZmlsbD0iIzAwQTg1QSIvPgo8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyMDUiIHI9Ijk0IiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjI1NiIgY3k9IjIwNSIgcj0iMzAiIGZpbGw9IiMxMzMxNWUiLz4KPHBvbHlnb24gcG9pbnRzPSIyNTYsMTgwIDI3NCwxOTMgMjY3LDIxNCAyNDUsMjE0IDIzOCwxOTMiIGZpbGw9IiMxMzMxNWUiLz4KPHRleHQgeD0iMjU2IiB5PSI0MDYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNTAiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI2PC90ZXh0Pgo8L2c+Cjwvc3ZnPgo=">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CjxkZWZzPjxjbGlwUGF0aCBpZD0iciI+PHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIHJ5PSIxMTIiLz48L2NsaXBQYXRoPjwvZGVmcz4KPGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj4KPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIGZpbGw9IiMwQjFGM0EiLz4KPGVsbGlwc2UgY3g9IjI1NiIgY3k9IjQ4MCIgcng9IjMwMCIgcnk9IjE2MCIgZmlsbD0iIzAwQTg1QSIvPgo8Y2lyY2xlIGN4PSIyNTYiIGN5PSIyMDUiIHI9Ijk0IiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjI1NiIgY3k9IjIwNSIgcj0iMzAiIGZpbGw9IiMxMzMxNWUiLz4KPHBvbHlnb24gcG9pbnRzPSIyNTYsMTgwIDI3NCwxOTMgMjY3LDIxNCAyNDUsMjE0IDIzOCwxOTMiIGZpbGw9IiMxMzMxNWUiLz4KPHRleHQgeD0iMjU2IiB5PSI0MDYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNTAiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjI2PC90ZXh0Pgo8L2c+Cjwvc3ZnPgo=">
+<meta name="theme-color" content="#0B1F3A">
+<meta name="apple-mobile-web-app-title" content="W杯2026">
+<style>
+  :root{
+    --ink:#0B1F3A;
+    --paper:#FBFCFE;
+    --card:#FFFFFF;
+    --line:#E4E9F2;
+    --pitch:#00A85A;
+    --pitch-dk:#007a41;
+    --gold:#F5A300;
+    --gold-bg:#FFF6E0;
+    --dazn:#111418;
+    --muted:#6B7A90;
+    --jp:#E5283C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    background:var(--paper);color:var(--ink);
+    line-height:1.5;padding-bottom:48px;
+  }
+  /* ---- header ---- */
+  header{
+    background:linear-gradient(110deg,var(--ink) 0%,#13315e 60%,var(--pitch-dk) 130%);
+    color:#fff;padding:18px 16px 16px;
+  }
+  .eyebrow{font-size:11px;letter-spacing:.22em;font-weight:700;color:#7fe3b0;text-transform:uppercase}
+  h1{font-size:24px;font-weight:800;letter-spacing:-.01em;margin-top:2px}
+  .sub{font-size:12px;color:#aebfd6;margin-top:4px}
+  /* ---- controls ---- */
+  .controls{
+    position:sticky;top:0;z-index:20;
+    background:rgba(251,252,254,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    padding:10px 12px;display:flex;flex-direction:column;gap:8px;
+  }
+  .row{display:flex;gap:8px;align-items:center}
+  select{
+    flex:1;font:inherit;font-size:14px;padding:9px 10px;border:1px solid var(--line);
+    border-radius:10px;background:#fff;color:var(--ink);-webkit-appearance:none;appearance:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%236B7A90' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
+    background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;
+  }
+  .toggles{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{
+    font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:999px;
+    border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;
+    user-select:none;transition:.12s;
+  }
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip.gold[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#3a2a00}
+  .chip.jp[aria-pressed="true"]{background:var(--jp);border-color:var(--jp);color:#fff}
+  .chip.reset{background:#EEF2F8;border-color:#D6DEEA;color:var(--ink)}
+  .chip.reset:active{background:#dfe6f1}
+  .count{font-size:12px;color:var(--muted);padding:2px 2px 0;flex-basis:100%}
+  /* ---- date section ---- */
+  .day{
+    position:sticky;top:118px;z-index:10;
+    background:var(--paper);
+    font-size:13px;font-weight:800;letter-spacing:.02em;
+    padding:14px 16px 6px;color:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .day .dow{color:var(--muted);font-weight:700;margin-left:6px;font-size:12px}
+  .day.today{color:var(--pitch-dk)}
+  .day .badge-today{
+    background:var(--pitch);color:#fff;font-size:10px;font-weight:800;
+    padding:2px 7px;border-radius:999px;margin-left:8px;vertical-align:1px;
+  }
+  /* ---- match card ---- */
+  .list{padding:8px 12px 0}
+  .match{
+    display:grid;grid-template-columns:58px 1fr;gap:12px;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:12px 13px;margin-bottom:9px;
+  }
+  .match.free{border-left:4px solid var(--gold);background:var(--gold-bg)}
+  .time{
+    font-variant-numeric:tabular-nums;font-feature-settings:"tnum";
+    font-weight:800;font-size:21px;letter-spacing:-.02em;line-height:1;
+    text-align:center;
+  }
+  .time small{display:block;font-size:10px;font-weight:700;color:var(--muted);margin-top:5px;letter-spacing:.04em}
+  .info{min-width:0}
+  .stage{font-size:10.5px;font-weight:800;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+  .stage .arg{color:var(--jp)}
+  .teams{font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .teams .vs{color:var(--muted);font-size:12px;font-weight:800;margin:0 2px}
+  .flag{font-size:17px}
+  .tbd{color:var(--muted);font-weight:600}
+  .meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:7px}
+  .badge{font-size:11px;font-weight:800;padding:3px 8px;border-radius:7px;letter-spacing:.02em}
+  .b-free{background:var(--gold);color:#3a2a00}
+  .b-dazn{background:var(--dazn);color:#fff}
+  .b-ft{background:#3a4a63;color:#fff}
+  .match.done{opacity:.72}
+  .match.done .time{color:var(--muted)}
+  .score{font-variant-numeric:tabular-nums;font-feature-settings:"tnum";font-weight:800;font-size:17px;color:var(--ink);margin-left:auto;padding-left:10px;white-space:nowrap}
+  .score-link{font-variant-numeric:tabular-nums;font-weight:800;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;margin-left:auto;padding:3px 9px;border-radius:8px;background:rgba(0,168,90,.1);border:1px solid rgba(0,168,90,.3);display:inline-block;white-space:nowrap}
+  .score-link:active{background:rgba(0,168,90,.25)}
+  .score-link .pk{display:block;font-size:10px;font-weight:700;color:var(--muted);text-align:right}
+  .score-link.preview{font-size:12px;color:var(--pitch-dk);padding:2px 7px}
+  .score .pk{display:block;font-size:10px;font-weight:700;color:var(--muted);text-align:right;letter-spacing:.02em}
+  #scoreStatus{font-size:11.5px;color:var(--muted);padding:6px 16px 0}
+  /* ---- view tabs ---- */
+  .viewtabs{display:flex;gap:8px;padding:10px 12px 0;background:var(--paper)}
+  .vtab{flex:1;font-size:13.5px;font-weight:800;padding:10px;border-radius:11px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+  .vtab[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  /* ---- standings ---- */
+  .std-wrap{padding:14px 12px 4px}
+  .std-group{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:14px;overflow:hidden}
+  .std-head{background:var(--ink);color:#fff;font-size:13px;font-weight:800;padding:9px 13px;letter-spacing:.02em}
+  table.std-tbl{width:100%;border-collapse:collapse;font-size:13px}
+  table.std-tbl th{font-size:10.5px;color:var(--muted);font-weight:700;padding:7px 4px;text-align:center;border-bottom:1px solid var(--line)}
+  table.std-tbl th.team-col{text-align:left;padding-left:10px}
+  table.std-tbl td{padding:8px 4px;text-align:center;border-bottom:1px solid #F0F2F6;font-variant-numeric:tabular-nums;vertical-align:middle}
+  table.std-tbl td.team-col{text-align:left;padding-left:10px;font-weight:700;white-space:nowrap;vertical-align:middle}
+  table.std-tbl td.team-col .flag{font-size:17px;margin-right:5px;vertical-align:-2px}
+  table.std-tbl tr:last-child td{border-bottom:none}
+  table.std-tbl tr.adv td{background:rgba(0,168,90,.08)}
+  table.std-tbl tr.adv td.team-col{border-left:3px solid var(--pitch)}
+  table.std-tbl td.pts{font-weight:800;color:var(--ink)}
+  table.std-tbl td small{display:block;font-size:9px;color:var(--muted);font-weight:600;margin-top:1px}
+  .std-legend{font-size:10.5px;color:var(--muted);padding:8px 13px 10px}
+  .std-note{font-size:11px;color:var(--muted);padding:0 12px 8px}
+  #squadLink{padding:8px 12px 0}
+  #squadLink a{display:inline-flex;align-items:center;gap:6px;background:var(--ink);color:#fff;font-size:13.5px;font-weight:700;text-decoration:none;padding:9px 14px;border-radius:10px}
+  #squadLink a:active{opacity:.85}
+  .team-link{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:4px}
+  .team-link:active{opacity:.7}
+  .venue{font-size:11.5px;color:var(--muted)}
+  /* ---- empty ---- */
+  .empty{text-align:center;color:var(--muted);padding:48px 24px;font-size:14px}
+  .note{font-size:11.5px;color:var(--muted);padding:18px 18px 4px;line-height:1.7}
+  footer{text-align:center;font-size:11px;color:var(--muted);padding:24px 16px}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">FIFA World Cup 2026 · CA / MX / US</div>
+  <h1>W杯2026 視聴ガイド</h1>
+  <div class="sub">時刻はすべて日本時間 ／ <span style="color:var(--gold)">●</span> 金色＝地上波・NHKで無料</div>
+</header>
+
+<div class="controls">
+  <div class="row">
+    <select id="teamSel" aria-label="チームで絞り込み"></select>
+    <select id="stageSel" aria-label="ステージで絞り込み">
+      <option value="all">全ステージ</option>
+      <option value="gl">グループリーグ</option>
+      <option value="ko">決勝トーナメント</option>
+    </select>
+  </div>
+  <div class="row">
+    <select id="groupSel" aria-label="グループで絞り込み">
+      <option value="all">全グループ</option>
+      <option value="A">A組</option>
+      <option value="B">B組</option>
+      <option value="C">C組</option>
+      <option value="D">D組</option>
+      <option value="E">E組</option>
+      <option value="F">F組</option>
+      <option value="G">G組</option>
+      <option value="H">H組</option>
+      <option value="I">I組</option>
+      <option value="J">J組</option>
+      <option value="K">K組</option>
+      <option value="L">L組</option>
+    </select>
+  </div>
+  <div class="toggles">
+    <button class="chip reset" id="resetChip">全試合に戻す</button>
+    <button class="chip gold" id="freeChip" aria-pressed="false">無料放送のみ</button>
+    <button class="chip" id="daznChip" aria-pressed="false">DAZN専用のみ</button>
+    <button class="chip" id="upcomingChip" aria-pressed="false">今日以降</button>
+    <button class="chip jp" id="jpnChip" aria-pressed="false">🇯🇵 日本</button>
+    <button class="chip jp" id="argChip" aria-pressed="false">🇦🇷 アルゼンチン</button>
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<div class="viewtabs">
+  <button class="vtab" id="tabSchedule" aria-pressed="true">📅 日程・結果</button>
+  <button class="vtab" id="tabStandings" aria-pressed="false">🏆 順位表</button>
+</div>
+
+<div id="scoreStatus"></div>
+<div id="squadLink"></div>
+<div id="app"></div>
+<div id="standingsApp" style="display:none"></div>
+
+<div class="note" id="dataNote"></div>
+<footer>データ: ゲキサカ番組表より手起こし／放送は変更の可能性あり。最終確認は各局・FIFA公式で。</footer>
+
+<script>
+// flag map
+const F={
+ "日本":"🇯🇵","オランダ":"🇳🇱","スウェーデン":"🇸🇪","チュニジア":"🇹🇳","ドイツ":"🇩🇪","キュラソー":"🇨🇼",
+ "コートジボワール":"🇨🇮","エクアドル":"🇪🇨","オーストラリア":"🇦🇺","トルコ":"🇹🇷","アメリカ":"🇺🇸","パラグアイ":"🇵🇾",
+ "スコットランド":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","モロッコ":"🇲🇦","ブラジル":"🇧🇷","ハイチ":"🇭🇹","チェコ":"🇨🇿","南アフリカ":"🇿🇦",
+ "メキシコ":"🇲🇽","韓国":"🇰🇷","スイス":"🇨🇭","ボスニア・ヘルツェゴビナ":"🇧🇦","カナダ":"🇨🇦","カタール":"🇶🇦",
+ "スペイン":"🇪🇸","カーボベルデ":"🇨🇻","ベルギー":"🇧🇪","エジプト":"🇪🇬","サウジアラビア":"🇸🇦","ウルグアイ":"🇺🇾",
+ "イラン":"🇮🇷","ニュージーランド":"🇳🇿","フランス":"🇫🇷","セネガル":"🇸🇳","イラク":"🇮🇶","ノルウェー":"🇳🇴",
+ "アルゼンチン":"🇦🇷","アルジェリア":"🇩🇿","オーストリア":"🇦🇹","ヨルダン":"🇯🇴","ポルトガル":"🇵🇹","コンゴ民主共和国":"🇨🇩",
+ "イングランド":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","クロアチア":"🇭🇷","ガーナ":"🇬🇭","パナマ":"🇵🇦","ウズベキスタン":"🇺🇿","コロンビア":"🇨🇴"
+};
+// matches: d=日付(2026-MM-DD), t=時刻, s=ステージ, g=グループ/節, a/b=チーム, v=会場, tv=無料局(空=DAZNのみ)
+const M=[
+ // ---- Group stage ----
+ // 6/12〜6/13 開幕節（後から追加）
+ {d:"2026-06-12",t:"04:00",s:"gl",g:"A組 1節",a:"メキシコ",b:"南アフリカ",v:"メキシコシティ",tv:"NHK"},
+ {d:"2026-06-12",t:"11:00",s:"gl",g:"A組 1節",a:"韓国",b:"チェコ",v:"グアダラハラ",tv:""},
+ {d:"2026-06-13",t:"04:00",s:"gl",g:"B組 1節",a:"カナダ",b:"ボスニア・ヘルツェゴビナ",v:"トロント",tv:"NHK"},
+ {d:"2026-06-13",t:"10:00",s:"gl",g:"D組 1節",a:"アメリカ",b:"パラグアイ",v:"ロサンゼルス",tv:""},
+ // 6/14
+ {d:"2026-06-14",t:"04:00",s:"gl",g:"B組 1節",a:"カタール",b:"スイス",v:"サンフランシスコ",tv:""},
+ {d:"2026-06-14",t:"07:00",s:"gl",g:"C組 1節",a:"ブラジル",b:"モロッコ",v:"ニューヨーク",tv:""},
+ {d:"2026-06-14",t:"10:00",s:"gl",g:"C組 1節",a:"ハイチ",b:"スコットランド",v:"ボストン",tv:"NHK"},
+ {d:"2026-06-14",t:"13:00",s:"gl",g:"D組 1節",a:"オーストラリア",b:"トルコ",v:"バンクーバー",tv:"日テレ系"},
+ {d:"2026-06-15",t:"02:00",s:"gl",g:"E組 1節",a:"ドイツ",b:"キュラソー",v:"ヒューストン",tv:""},
+ {d:"2026-06-15",t:"05:00",s:"gl",g:"F組 1節",a:"日本",b:"オランダ",v:"ダラス",tv:"NHK"},
+ {d:"2026-06-15",t:"08:00",s:"gl",g:"E組 1節",a:"コートジボワール",b:"エクアドル",v:"フィラデルフィア",tv:""},
+ {d:"2026-06-15",t:"11:00",s:"gl",g:"F組 1節",a:"スウェーデン",b:"チュニジア",v:"モンテレイ",tv:"日テレ系"},
+ {d:"2026-06-16",t:"01:00",s:"gl",g:"H組 1節",a:"スペイン",b:"カーボベルデ",v:"アトランタ",tv:"NHK"},
+ {d:"2026-06-16",t:"04:00",s:"gl",g:"G組 1節",a:"ベルギー",b:"エジプト",v:"シアトル",tv:"NHK"},
+ {d:"2026-06-16",t:"07:00",s:"gl",g:"H組 1節",a:"サウジアラビア",b:"ウルグアイ",v:"マイアミ",tv:""},
+ {d:"2026-06-16",t:"10:00",s:"gl",g:"G組 1節",a:"イラン",b:"ニュージーランド",v:"ロサンゼルス",tv:""},
+ {d:"2026-06-17",t:"04:00",s:"gl",g:"I組 1節",a:"フランス",b:"セネガル",v:"ニューヨーク",tv:"フジ系"},
+ {d:"2026-06-17",t:"07:00",s:"gl",g:"I組 1節",a:"イラク",b:"ノルウェー",v:"ボストン",tv:""},
+ {d:"2026-06-17",t:"10:00",s:"gl",g:"J組 1節",a:"アルゼンチン",b:"アルジェリア",v:"カンザスシティ",tv:"NHK"},
+ {d:"2026-06-17",t:"13:00",s:"gl",g:"J組 1節",a:"オーストリア",b:"ヨルダン",v:"サンフランシスコ",tv:""},
+ {d:"2026-06-18",t:"02:00",s:"gl",g:"K組 1節",a:"ポルトガル",b:"コンゴ民主共和国",v:"ヒューストン",tv:"フジ系"},
+ {d:"2026-06-18",t:"05:00",s:"gl",g:"L組 1節",a:"イングランド",b:"クロアチア",v:"ダラス",tv:""},
+ {d:"2026-06-18",t:"08:00",s:"gl",g:"L組 1節",a:"ガーナ",b:"パナマ",v:"トロント",tv:""},
+ {d:"2026-06-18",t:"11:00",s:"gl",g:"K組 1節",a:"ウズベキスタン",b:"コロンビア",v:"メキシコシティ",tv:""},
+ {d:"2026-06-19",t:"01:00",s:"gl",g:"A組 2節",a:"チェコ",b:"南アフリカ",v:"アトランタ",tv:"日テレ系"},
+ {d:"2026-06-19",t:"04:00",s:"gl",g:"B組 2節",a:"スイス",b:"ボスニア・ヘルツェゴビナ",v:"ロサンゼルス",tv:""},
+ {d:"2026-06-19",t:"07:00",s:"gl",g:"B組 2節",a:"カナダ",b:"カタール",v:"バンクーバー",tv:""},
+ {d:"2026-06-19",t:"10:00",s:"gl",g:"A組 2節",a:"メキシコ",b:"韓国",v:"グアダラハラ",tv:"NHK"},
+ {d:"2026-06-20",t:"04:00",s:"gl",g:"D組 2節",a:"アメリカ",b:"オーストラリア",v:"シアトル",tv:"NHK"},
+ {d:"2026-06-20",t:"07:00",s:"gl",g:"C組 2節",a:"スコットランド",b:"モロッコ",v:"ボストン",tv:"フジ系"},
+ {d:"2026-06-20",t:"09:30",s:"gl",g:"C組 2節",a:"ブラジル",b:"ハイチ",v:"フィラデルフィア",tv:"NHK"},
+ {d:"2026-06-20",t:"12:00",s:"gl",g:"D組 2節",a:"トルコ",b:"パラグアイ",v:"サンフランシスコ",tv:""},
+ {d:"2026-06-21",t:"02:00",s:"gl",g:"F組 2節",a:"オランダ",b:"スウェーデン",v:"ヒューストン",tv:"NHK"},
+ {d:"2026-06-21",t:"05:00",s:"gl",g:"E組 2節",a:"ドイツ",b:"コートジボワール",v:"トロント",tv:"日テレ系"},
+ {d:"2026-06-21",t:"09:00",s:"gl",g:"E組 2節",a:"エクアドル",b:"キュラソー",v:"カンザスシティ",tv:""},
+ {d:"2026-06-21",t:"13:00",s:"gl",g:"F組 2節",a:"日本",b:"チュニジア",v:"モンテレイ",tv:"日テレ系/NHK BS"},
+ {d:"2026-06-22",t:"01:00",s:"gl",g:"H組 2節",a:"スペイン",b:"サウジアラビア",v:"アトランタ",tv:"NHK"},
+ {d:"2026-06-22",t:"04:00",s:"gl",g:"G組 2節",a:"ベルギー",b:"イラン",v:"ロサンゼルス",tv:""},
+ {d:"2026-06-22",t:"07:00",s:"gl",g:"H組 2節",a:"ウルグアイ",b:"カーボベルデ",v:"マイアミ",tv:""},
+ {d:"2026-06-22",t:"10:00",s:"gl",g:"G組 2節",a:"ニュージーランド",b:"エジプト",v:"バンクーバー",tv:""},
+ {d:"2026-06-23",t:"02:00",s:"gl",g:"J組 2節",a:"アルゼンチン",b:"オーストリア",v:"ダラス",tv:""},
+ {d:"2026-06-23",t:"06:00",s:"gl",g:"I組 2節",a:"フランス",b:"イラク",v:"フィラデルフィア",tv:""},
+ {d:"2026-06-23",t:"09:00",s:"gl",g:"I組 2節",a:"ノルウェー",b:"セネガル",v:"ニューヨーク",tv:"NHK"},
+ {d:"2026-06-23",t:"12:00",s:"gl",g:"J組 2節",a:"ヨルダン",b:"アルジェリア",v:"サンフランシスコ",tv:""},
+ {d:"2026-06-24",t:"02:00",s:"gl",g:"K組 2節",a:"ポルトガル",b:"ウズベキスタン",v:"ヒューストン",tv:"NHK"},
+ {d:"2026-06-24",t:"05:00",s:"gl",g:"L組 2節",a:"イングランド",b:"ガーナ",v:"ボストン",tv:""},
+ {d:"2026-06-24",t:"08:00",s:"gl",g:"L組 2節",a:"パナマ",b:"クロアチア",v:"トロント",tv:"フジ系"},
+ {d:"2026-06-24",t:"11:00",s:"gl",g:"K組 2節",a:"コロンビア",b:"コンゴ民主共和国",v:"グアダラハラ",tv:"日テレ系"},
+ {d:"2026-06-25",t:"04:00",s:"gl",g:"B組 3節",a:"スイス",b:"カナダ",v:"バンクーバー",tv:"NHK"},
+ {d:"2026-06-25",t:"04:00",s:"gl",g:"B組 3節",a:"ボスニア・ヘルツェゴビナ",b:"カタール",v:"シアトル",tv:""},
+ {d:"2026-06-25",t:"07:00",s:"gl",g:"C組 3節",a:"スコットランド",b:"ブラジル",v:"マイアミ",tv:""},
+ {d:"2026-06-25",t:"07:00",s:"gl",g:"C組 3節",a:"モロッコ",b:"ハイチ",v:"アトランタ",tv:""},
+ {d:"2026-06-25",t:"10:00",s:"gl",g:"A組 3節",a:"チェコ",b:"メキシコ",v:"メキシコシティ",tv:"NHK"},
+ {d:"2026-06-25",t:"10:00",s:"gl",g:"A組 3節",a:"南アフリカ",b:"韓国",v:"モンテレイ",tv:""},
+ {d:"2026-06-26",t:"05:00",s:"gl",g:"E組 3節",a:"エクアドル",b:"ドイツ",v:"ニューヨーク",tv:""},
+ {d:"2026-06-26",t:"05:00",s:"gl",g:"E組 3節",a:"キュラソー",b:"コートジボワール",v:"フィラデルフィア",tv:""},
+ {d:"2026-06-26",t:"08:00",s:"gl",g:"F組 3節",a:"日本",b:"スウェーデン",v:"ダラス",tv:"NHK"},
+ {d:"2026-06-26",t:"08:00",s:"gl",g:"F組 3節",a:"チュニジア",b:"オランダ",v:"カンザスシティ",tv:""},
+ {d:"2026-06-26",t:"11:00",s:"gl",g:"D組 3節",a:"トルコ",b:"アメリカ",v:"ロサンゼルス",tv:"日テレ系"},
+ {d:"2026-06-26",t:"11:00",s:"gl",g:"D組 3節",a:"パラグアイ",b:"オーストラリア",v:"サンフランシスコ",tv:""},
+ {d:"2026-06-27",t:"04:00",s:"gl",g:"I組 3節",a:"ノルウェー",b:"フランス",v:"ボストン",tv:"NHK"},
+ {d:"2026-06-27",t:"04:00",s:"gl",g:"I組 3節",a:"セネガル",b:"イラク",v:"トロント",tv:""},
+ {d:"2026-06-27",t:"09:00",s:"gl",g:"H組 3節",a:"カーボベルデ",b:"サウジアラビア",v:"ヒューストン",tv:""},
+ {d:"2026-06-27",t:"09:00",s:"gl",g:"H組 3節",a:"ウルグアイ",b:"スペイン",v:"グアダラハラ",tv:"日テレ系"},
+ {d:"2026-06-27",t:"12:00",s:"gl",g:"G組 3節",a:"エジプト",b:"イラン",v:"シアトル",tv:""},
+ {d:"2026-06-27",t:"12:00",s:"gl",g:"G組 3節",a:"ニュージーランド",b:"ベルギー",v:"バンクーバー",tv:"日テレ系"},
+ {d:"2026-06-28",t:"06:00",s:"gl",g:"L組 3節",a:"パナマ",b:"イングランド",v:"ニューヨーク",tv:""},
+ {d:"2026-06-28",t:"06:00",s:"gl",g:"L組 3節",a:"クロアチア",b:"ガーナ",v:"フィラデルフィア",tv:""},
+ {d:"2026-06-28",t:"08:30",s:"gl",g:"K組 3節",a:"コロンビア",b:"ポルトガル",v:"マイアミ",tv:"フジ系"},
+ {d:"2026-06-28",t:"08:30",s:"gl",g:"K組 3節",a:"コンゴ民主共和国",b:"ウズベキスタン",v:"アトランタ",tv:""},
+ {d:"2026-06-28",t:"11:00",s:"gl",g:"J組 3節",a:"アルジェリア",b:"オーストリア",v:"カンザスシティ",tv:""},
+ {d:"2026-06-28",t:"11:00",s:"gl",g:"J組 3節",a:"ヨルダン",b:"アルゼンチン",v:"ダラス",tv:"NHK"},
+ // ---- Round of 32 ----
+ {d:"2026-06-29",t:"04:00",s:"ko",g:"決勝T 1回戦 [1]",a:"A組2位",b:"B組2位",v:"ロサンゼルス",tv:""},
+ {d:"2026-06-30",t:"02:00",s:"ko",g:"決勝T 1回戦 [2]",a:"C組1位",b:"F組2位",v:"ヒューストン",tv:""},
+ {d:"2026-06-30",t:"05:30",s:"ko",g:"決勝T 1回戦 [3]",a:"E組1位",b:"A/B/C/D/F組3位",v:"ボストン",tv:""},
+ {d:"2026-06-30",t:"10:00",s:"ko",g:"決勝T 1回戦 [4]",a:"F組1位",b:"C組2位",v:"モンテレイ",tv:""},
+ {d:"2026-07-01",t:"02:00",s:"ko",g:"決勝T 1回戦 [5]",a:"E組2位",b:"I組2位",v:"ダラス",tv:"日テレ系"},
+ {d:"2026-07-01",t:"06:00",s:"ko",g:"決勝T 1回戦 [6]",a:"I組1位",b:"C/D/F/G/H組3位",v:"ニューヨーク",tv:""},
+ {d:"2026-07-01",t:"10:00",s:"ko",g:"決勝T 1回戦 [7]",a:"A組1位",b:"C/E/F/H/I組3位",v:"メキシコシティ",tv:""},
+ {d:"2026-07-02",t:"01:00",s:"ko",g:"決勝T 1回戦 [8]",a:"L組1位",b:"E/H/I/J/K組3位",v:"アトランタ",tv:""},
+ {d:"2026-07-02",t:"05:00",s:"ko",g:"決勝T 1回戦 [9]",a:"G組1位",b:"A/E/H/I/J組3位",v:"シアトル",tv:""},
+ {d:"2026-07-02",t:"09:00",s:"ko",g:"決勝T 1回戦 [10]",a:"D組1位",b:"B/E/F/I/J組3位",v:"サンフランシスコ",tv:""},
+ {d:"2026-07-03",t:"04:00",s:"ko",g:"決勝T 1回戦 [11]",a:"H組1位",b:"J組2位",v:"ロサンゼルス",tv:""},
+ {d:"2026-07-03",t:"08:00",s:"ko",g:"決勝T 1回戦 [12]",a:"K組2位",b:"L組2位",v:"トロント",tv:"日テレ系"},
+ {d:"2026-07-03",t:"12:00",s:"ko",g:"決勝T 1回戦 [13]",a:"B組1位",b:"E/F/G/I/J組3位",v:"バンクーバー",tv:""},
+ {d:"2026-07-04",t:"03:00",s:"ko",g:"決勝T 1回戦 [14]",a:"D組2位",b:"G組2位",v:"ダラス",tv:""},
+ {d:"2026-07-04",t:"07:00",s:"ko",g:"決勝T 1回戦 [15]",a:"J組1位",b:"H組2位",v:"マイアミ",tv:"日テレ系"},
+ {d:"2026-07-04",t:"10:30",s:"ko",g:"決勝T 1回戦 [16]",a:"K組1位",b:"D/E/I/J/L組3位",v:"カンザスシティ",tv:""},
+ // ---- Round of 16 ----
+ {d:"2026-07-05",t:"02:00",s:"ko",g:"決勝T 2回戦 [a]",a:"[1]の勝者",b:"[4]の勝者",v:"ヒューストン",tv:""},
+ {d:"2026-07-05",t:"06:00",s:"ko",g:"決勝T 2回戦 [b]",a:"[3]の勝者",b:"[6]の勝者",v:"フィラデルフィア",tv:"日テレ系"},
+ {d:"2026-07-06",t:"05:00",s:"ko",g:"決勝T 2回戦 [c]",a:"[2]の勝者",b:"[5]の勝者",v:"ニューヨーク",tv:""},
+ {d:"2026-07-06",t:"09:00",s:"ko",g:"決勝T 2回戦 [d]",a:"[7]の勝者",b:"[8]の勝者",v:"メキシコシティ",tv:""},
+ {d:"2026-07-07",t:"04:00",s:"ko",g:"決勝T 2回戦 [e]",a:"[12]の勝者",b:"[11]の勝者",v:"ダラス",tv:"日テレ系"},
+ {d:"2026-07-07",t:"09:00",s:"ko",g:"決勝T 2回戦 [f]",a:"[10]の勝者",b:"[9]の勝者",v:"シアトル",tv:""},
+ {d:"2026-07-08",t:"01:00",s:"ko",g:"決勝T 2回戦 [g]",a:"[15]の勝者",b:"[14]の勝者",v:"アトランタ",tv:""},
+ {d:"2026-07-08",t:"05:00",s:"ko",g:"決勝T 2回戦 [h]",a:"[13]の勝者",b:"[16]の勝者",v:"バンクーバー",tv:""},
+ // ---- Quarterfinals ----
+ {d:"2026-07-10",t:"05:00",s:"ko",g:"準々決勝 [1]",a:"[b]の勝者",b:"[a]の勝者",v:"ボストン",tv:""},
+ {d:"2026-07-11",t:"04:00",s:"ko",g:"準々決勝 [2]",a:"[e]の勝者",b:"[f]の勝者",v:"ロサンゼルス",tv:""},
+ {d:"2026-07-12",t:"06:00",s:"ko",g:"準々決勝 [3]",a:"[c]の勝者",b:"[d]の勝者",v:"マイアミ",tv:""},
+ {d:"2026-07-12",t:"10:00",s:"ko",g:"準々決勝 [4]",a:"[g]の勝者",b:"[h]の勝者",v:"カンザスシティ",tv:""},
+ // ---- Semifinals ----
+ {d:"2026-07-15",t:"04:00",s:"ko",g:"準決勝 ①",a:"[1]の勝者",b:"[2]の勝者",v:"ダラス",tv:""},
+ {d:"2026-07-16",t:"04:00",s:"ko",g:"準決勝 ②",a:"[3]の勝者",b:"[4]の勝者",v:"アトランタ",tv:""},
+ // ---- 3rd / Final ----
+ {d:"2026-07-19",t:"06:00",s:"ko",g:"3位決定戦",a:"未定",b:"未定",v:"マイアミ",tv:"NHK"},
+ {d:"2026-07-20",t:"04:00",s:"ko",g:"決勝",a:"未定",b:"未定",v:"ニューヨーク",tv:"NHK"}
+];
+
+const TODAY=(()=>{const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}`;})();
+const DOW=["日","月","火","水","木","金","土"];
+const knownTeams=[...new Set(M.flatMap(m=>[m.a,m.b]).filter(x=>F[x]))].sort((a,b)=>a.localeCompare(b,"ja"));
+
+// build team dropdown
+const teamSel=document.getElementById("teamSel");
+teamSel.innerHTML='<option value="all">全チーム</option>'+knownTeams.map(t=>`<option value="${t}">${F[t]||""} ${t}</option>`).join("");
+
+const state={team:"all",stage:"all",group:"all",free:false,dazn:false,upcoming:false,fav:null};
+
+function chip(id,key){const el=document.getElementById(id);el.addEventListener("click",()=>{
+  state[key]=!state[key];el.setAttribute("aria-pressed",state[key]);
+  render();
+});}
+chip("upcomingChip","upcoming");
+// quick team chips (日本 / アルゼンチン) — only one active, synced with dropdown
+const QUICK=[["jpnChip","日本"],["argChip","アルゼンチン"]];
+function syncQuick(){QUICK.forEach(([id,name])=>document.getElementById(id).setAttribute("aria-pressed",state.fav===name));}
+QUICK.forEach(([id,name])=>{document.getElementById(id).addEventListener("click",()=>{
+  if(state.fav===name){state.fav=null;state.team="all";teamSel.value="all";}
+  else{state.fav=name;state.team=name;teamSel.value=name;}
+  syncQuick();render();
+});});
+// free / dazn are mutually exclusive
+function exclusiveChip(id,key,other){const el=document.getElementById(id);el.addEventListener("click",()=>{
+  state[key]=!state[key];el.setAttribute("aria-pressed",state[key]);
+  if(state[key]){state[other]=false;document.getElementById(other==="free"?"freeChip":"daznChip").setAttribute("aria-pressed",false);}
+  render();
+});}
+exclusiveChip("freeChip","free","dazn");
+exclusiveChip("daznChip","dazn","free");
+teamSel.addEventListener("change",e=>{state.team=e.target.value;state.fav=QUICK.some(q=>q[1]===e.target.value)?e.target.value:null;syncQuick();render();});
+document.getElementById("stageSel").addEventListener("change",e=>{state.stage=e.target.value;render();});
+document.getElementById("groupSel").addEventListener("change",e=>{state.group=e.target.value;render();});
+
+// reset all filters to default
+document.getElementById("resetChip").addEventListener("click",()=>{
+  Object.assign(state,{team:"all",stage:"all",group:"all",free:false,dazn:false,upcoming:false,fav:null});
+  teamSel.value="all";
+  document.getElementById("stageSel").value="all";
+  document.getElementById("groupSel").value="all";
+  document.getElementById("freeChip").setAttribute("aria-pressed",false);
+  document.getElementById("daznChip").setAttribute("aria-pressed",false);
+  document.getElementById("upcomingChip").setAttribute("aria-pressed",false);
+  syncQuick();
+  render();
+});
+
+function teamCell(name){
+  const flag=F[name]?`<span class="flag">${F[name]}</span>`:"";
+  const url=squadUrl(name);
+  if(url)return `<a class="team-link" href="${url}" target="_blank" rel="noopener">${flag}${name}</a>`;
+  if(F[name])return `${flag}${name}`;
+  return `<span class="tbd">${name}</span>`;
+}
+
+// ---- openfootball スコア連携（ゆる速報・APIキー不要） ----
+// 日本語名 → openfootballで使われ得る英語表記（実名＋プレーオフ仮名の両対応）
+const JP2EN={
+ "日本":["japan"],"オランダ":["netherlands"],"スウェーデン":["sweden","uefa path b winner"],
+ "チュニジア":["tunisia"],"ドイツ":["germany"],"キュラソー":["curaçao","curacao"],
+ "コートジボワール":["ivory coast","côte d'ivoire","cote d'ivoire"],"エクアドル":["ecuador"],
+ "オーストラリア":["australia"],"トルコ":["turkey","türkiye","turkiye","uefa path c winner"],
+ "アメリカ":["usa","united states"],"パラグアイ":["paraguay"],"スコットランド":["scotland"],
+ "モロッコ":["morocco"],"ブラジル":["brazil"],"ハイチ":["haiti"],
+ "チェコ":["czech republic","czechia","uefa path d winner"],"南アフリカ":["south africa"],
+ "メキシコ":["mexico"],"韓国":["south korea","korea republic"],"スイス":["switzerland"],
+ "ボスニア・ヘルツェゴビナ":["bosnia & herzegovina","bosnia and herzegovina","uefa path a winner"],"カナダ":["canada"],
+ "カタール":["qatar"],"スペイン":["spain"],"カーボベルデ":["cape verde","cabo verde"],
+ "ベルギー":["belgium"],"エジプト":["egypt"],"サウジアラビア":["saudi arabia"],"ウルグアイ":["uruguay"],
+ "イラン":["iran","ir iran"],"ニュージーランド":["new zealand"],"フランス":["france"],"セネガル":["senegal"],
+ "イラク":["iraq","ic path 2 winner"],"ノルウェー":["norway"],"アルゼンチン":["argentina"],
+ "アルジェリア":["algeria"],"オーストリア":["austria"],"ヨルダン":["jordan"],"ポルトガル":["portugal"],
+ "コンゴ民主共和国":["dr congo","congo dr","ic path 1 winner"],"イングランド":["england"],
+ "クロアチア":["croatia"],"ガーナ":["ghana"],"パナマ":["panama"],"ウズベキスタン":["uzbekistan"],"コロンビア":["colombia"]
+};
+const EN2JP={};
+for(const jp in JP2EN)for(const en of JP2EN[jp])EN2JP[en]=jp;
+const norm=s=>(s||"").toLowerCase().trim();
+const pairKey=(x,y)=>[x,y].sort().join("|");
+
+// スポーツナビ 試合詳細URL（全試合ID確認済み）
+const BASE_SN_GAME="https://soccer.yahoo.co.jp/wcup/category/2026/game/";
+const SN_IDS={
+  "メキシコ|南アフリカ":"2026061101",
+  "チェコ|韓国":"2026061102",
+  "カナダ|ボスニア・ヘルツェゴビナ":"2026061201",
+  "アメリカ|パラグアイ":"2026061202",
+  "スコットランド|ハイチ":"2026061301",
+  "ブラジル|モロッコ":"2026061302",
+  "カタール|スイス":"2026061303",
+  "オーストラリア|トルコ":"2026061313",
+  "エクアドル|コートジボワール":"2026061402",
+  "キュラソー|ドイツ":"2026061403",
+  "オランダ|日本":"2026061404",
+  "スウェーデン|チュニジア":"2026061405",
+  "ウルグアイ|サウジアラビア":"2026061501",
+  "カーボベルデ|スペイン":"2026061502",
+  "イラン|ニュージーランド":"2026061503",
+  "エジプト|ベルギー":"2026061504",
+  "セネガル|フランス":"2026061601",
+  "イラク|ノルウェー":"2026061602",
+  "アルジェリア|アルゼンチン":"2026061603",
+  "オーストリア|ヨルダン":"2026061604",
+  "チェコ|南アフリカ":"2026061801",
+  "ボスニア・ヘルツェゴビナ|スイス":"2026061802",
+  "スイス|ボスニア・ヘルツェゴビナ":"2026061802",
+  "カタール|カナダ":"2026061803",
+  "メキシコ|韓国":"2026061804",
+  "ハイチ|ブラジル":"2026061901",
+  "スコットランド|モロッコ":"2026061902",
+  "トルコ|パラグアイ":"2026061903",
+  "アメリカ|オーストラリア":"2026061904",
+  "コートジボワール|ドイツ":"2026062002",
+  "エクアドル|キュラソー":"2026062003",
+  "オランダ|スウェーデン":"2026062004",
+  "チュニジア|日本":"2026062005",
+  "ウルグアイ|カーボベルデ":"2026062102",
+  "サウジアラビア|スペイン":"2026062103",
+  "イラン|ベルギー":"2026062104",
+  "エジプト|ニュージーランド":"2026062105",
+  "セネガル|ノルウェー":"2026062201",
+  "イラク|フランス":"2026062202",
+  "スコットランド|ブラジル":"2026062401",
+  "ハイチ|モロッコ":"2026062402",
+  "カナダ|スイス":"2026062403",
+  "カタール|ボスニア・ヘルツェゴビナ":"2026062404",
+  "チェコ|メキシコ":"2026062405",
+  "南アフリカ|韓国":"2026062406",
+  "キュラソー|コートジボワール":"2026062501",
+  "エクアドル|ドイツ":"2026062502",
+  "スウェーデン|日本":"2026062503",
+  "オランダ|チュニジア":"2026062504",
+  "アメリカ|トルコ":"2026062505",
+  "オーストラリア|パラグアイ":"2026062506",
+  "ノルウェー|フランス":"2026062601",
+  "イラク|セネガル":"2026062602",
+  "イラン|エジプト":"2026062603",
+  "ニュージーランド|ベルギー":"2026062604",
+  "カーボベルデ|サウジアラビア":"2026062605",
+  "ウルグアイ|スペイン":"2026062606",
+  "コンゴ民主共和国|ポルトガル":"2026061704",
+  "ガーナ|パナマ":"2026061702",
+  "イングランド|クロアチア":"2026061703",
+  "ウズベキスタン|コロンビア":"2026061705",
+  "アルゼンチン|オーストリア":"2026062203",
+  "アルジェリア|ヨルダン":"2026062204",
+  "ウズベキスタン|ポルトガル":"2026062301",
+  "コロンビア|コンゴ民主共和国":"2026062302",
+  "イングランド|ガーナ":"2026062303",
+  "クロアチア|パナマ":"2026062304",
+  "アルジェリア|オーストリア":"2026062701",
+  "アルゼンチン|ヨルダン":"2026062702",
+  "コロンビア|ポルトガル":"2026062703",
+  "ウズベキスタン|コンゴ民主共和国":"2026062704",
+  "イングランド|パナマ":"2026062705",
+  "ガーナ|クロアチア":"2026062706",
+  "A組2位|B組2位":"2026062802",
+  "A/B/C/D/F組3位|E組1位":"2026062901",
+  "C組1位|F組2位":"2026062902",
+  "C組2位|F組1位":"2026062903",
+  "C/D/F/G/H組3位|I組1位":"2026063001",
+  "E組2位|I組2位":"2026063002",
+  "A組1位|C/E/F/H/I組3位":"2026063003",
+  "E/H/I/J/K組3位|L組1位":"2026070101",
+  "B/E/F/I/J組3位|D組1位":"2026070102",
+  "A/E/H/I/J組3位|G組1位":"2026070103",
+  "H組1位|J組2位":"2026070201",
+  "K組2位|L組2位":"2026070202",
+  "B組1位|E/F/G/I/J組3位":"2026070203",
+  "D組2位|G組2位":"2026070303",
+  "H組2位|J組1位":"2026070301",
+  "D/E/I/J/L組3位|K組1位":"2026070302",
+  "[3]の勝者|[6]の勝者":"2026070401",
+  "[1]の勝者|[4]の勝者":"2026070402",
+  "[2]の勝者|[5]の勝者":"2026070501",
+  "[7]の勝者|[8]の勝者":"2026070502",
+  "[11]の勝者|[12]の勝者":"2026070601",
+  "[10]の勝者|[9]の勝者":"2026070602",
+  "[14]の勝者|[15]の勝者":"2026070701",
+  "[13]の勝者|[16]の勝者":"2026070702"
+};
+function snGameUrl(m){
+  const k=pairKey(m.a,m.b);
+  const id=SN_IDS[k];
+  return id?`${BASE_SN_GAME}${id}/summary?gk=18`:null;
+}
+
+let SCORES={};
+function getScore(m){
+  const r=SCORES[pairKey(m.a,m.b)];
+  if(!r)return null;
+  // r.t1/r.t2 は openfootball の team1/team2 を日本語化したもの
+  if(r.t1===m.a){return {h:r.g1,a:r.g2,pk:r.pk?{h:r.pk1,a:r.pk2}:null};}
+  return {h:r.g2,a:r.g1,pk:r.pk?{h:r.pk2,a:r.pk1}:null};
+}
+
+function setStatus(t){document.getElementById("scoreStatus").textContent=t;}
+
+async function fetchScores(){
+  setStatus("スコア: 読み込み中…");
+  const url="https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json";
+  try{
+    const res=await fetch(url,{cache:"no-store"});
+    if(!res.ok)throw new Error(res.status);
+    const data=await res.json();
+    const map={};
+    let n=0;
+    for(const mt of (data.matches||[])){
+      const jp1=EN2JP[norm(mt.team1)], jp2=EN2JP[norm(mt.team2)];
+      if(!jp1||!jp2)continue;                 // 未解決（プレーオフ仮名など）はスキップ
+      const ft=mt.score&&mt.score.ft;
+      if(!ft||ft.length<2)continue;           // スコア未確定はスキップ
+      const rec={t1:jp1,t2:jp2,g1:ft[0],g2:ft[1]};
+      if(mt.score.p&&mt.score.p.length>=2){rec.pk=true;rec.pk1=mt.score.p[0];rec.pk2=mt.score.p[1];}
+      map[pairKey(jp1,jp2)]=rec; n++;
+    }
+    SCORES=map;
+    const now=new Date();
+    setStatus(`スコア: ${n}試合反映済み（更新 ${String(now.getHours()).padStart(2,"0")}:${String(now.getMinutes()).padStart(2,"0")}）／ 出典 openfootball・反映に遅れあり`);
+    render();
+    renderStandings();
+  }catch(e){
+    setStatus("スコア: 取得できず（日程は通常どおり表示）");
+  }
+}
+
+// ---- 順位表（グループリーグのみ・簡易版） ----
+// 並び順: 勝点 → 得失点差 → 総得点（直接対決は未考慮）
+function buildStandings(){
+  const groups={}; // "A" -> {teams:Set, table:{name:{...}}}
+  for(const m of M){
+    if(m.s!=="gl")continue;
+    const gm=m.g.match(/^([A-L])組/);
+    if(!gm)continue;
+    const gKey=gm[1];
+    groups[gKey]=groups[gKey]||{};
+    for(const t of [m.a,m.b]){
+      if(!groups[gKey][t])groups[gKey][t]={name:t,p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0};
+    }
+    const sc=getScore(m);
+    if(!sc)continue; // 未消化の試合はカウントしない
+    const home=groups[gKey][m.a], away=groups[gKey][m.b];
+    home.p++; away.p++;
+    home.gf+=sc.h; home.ga+=sc.a;
+    away.gf+=sc.a; away.ga+=sc.h;
+    if(sc.h>sc.a){home.w++;home.pts+=3;away.l++;}
+    else if(sc.h<sc.a){away.w++;away.pts+=3;home.l++;}
+    else{home.d++;away.d++;home.pts++;away.pts++;}
+  }
+  const result={};
+  for(const gKey in groups){
+    const rows=Object.values(groups[gKey]);
+    rows.sort((a,b)=> b.pts-a.pts || (b.gf-b.ga)-(a.gf-a.ga) || b.gf-a.gf || a.name.localeCompare(b.name,"ja"));
+    result[gKey]=rows;
+  }
+  return result;
+}
+
+function renderStandings(){
+  const el=document.getElementById("standingsApp");
+  const data=buildStandings();
+  const groupKeys=Object.keys(data).sort();
+  if(!groupKeys.length){el.innerHTML='<div class="empty">グループデータがまだないわ。</div>';return;}
+  let html='<div class="std-wrap">';
+  for(const gKey of groupKeys){
+    const rows=data[gKey];
+    html+=`<div class="std-group"><div class="std-head">${gKey}組</div>
+      <table class="std-tbl"><thead><tr>
+        <th class="team-col">チーム</th><th>試</th><th>勝</th><th>分</th><th>負</th><th>得失</th><th>勝点</th>
+      </tr></thead><tbody>`;
+    rows.forEach((r,i)=>{
+      const gd=r.gf-r.ga;
+      const gdStr=gd>0?`+${gd}`:`${gd}`;
+      html+=`<tr class="${i<2?"adv":""}">
+        <td class="team-col">${F[r.name]||""} ${r.name}</td>
+        <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td>
+        <td>${gdStr}<small>(${r.gf}-${r.ga})</small></td><td class="pts">${r.pts}</td>
+      </tr>`;
+    });
+    html+=`</tbody></table><div class="std-legend">緑＝決勝T進出圏内（1〜2位。3位通過は12組の成績比較で別途確定）</div></div>`;
+  }
+  html+='</div>';
+  el.innerHTML=html;
+}
+
+// スポーツナビ W杯2026 選手名鑑URL（全48カ国確認済み）
+const BASE_SN="https://soccer.yahoo.co.jp/wcup/category/2026/teams/";
+const SQUAD={
+ "日本":142,"オランダ":205,"スウェーデン":263,"チュニジア":279,
+ "ドイツ":65,"キュラソー":31781,"コートジボワール":30121,"エクアドル":75,
+ "オーストラリア":11,"トルコ":275,"アメリカ":10,"パラグアイ":217,
+ "スコットランド":237,"モロッコ":183,"ブラジル":41,"ハイチ":31551,
+ "チェコ":43,"南アフリカ":179,"メキシコ":186,"韓国":146,
+ "スイス":30128,"ボスニア・ヘルツェゴビナ":30129,"カナダ":47,"カタール":42,
+ "スペイン":257,"カーボベルデ":30177,"ベルギー":22,"エジプト":76,
+ "サウジアラビア":12,"ウルグアイ":283,"イラン":117,"ニュージーランド":201,
+ "フランス":89,"セネガル":259,"イラク":107,"ノルウェー":197,
+ "アルゼンチン":17,"アルジェリア":30167,"オーストリア":30296,"ヨルダン":30051,
+ "ポルトガル":220,"コンゴ民主共和国":30193,"イングランド":113,"クロアチア":160,
+ "ガーナ":30054,"パナマ":30198,"ウズベキスタン":284,"コロンビア":157
+};
+function squadUrl(name){
+  const id=SQUAD[name];
+  return id?`${BASE_SN}${id}/directory?gk=18`:null;
+}
+function renderSquadLink(){
+  const el=document.getElementById("squadLink");
+  const t=state.team;
+  const url=t!=="all"?squadUrl(t):null;
+  el.innerHTML=url?`<a href="${url}" target="_blank" rel="noopener">${F[t]||""} ${t}のメンバー（スポーツナビ）↗</a>`:"";
+}
+
+function render(){
+  renderSquadLink();
+  let rows=M.filter(m=>{
+    if(state.team!=="all" && m.a!==state.team && m.b!==state.team)return false;
+    if(state.stage!=="all" && m.s!==state.stage)return false;
+    if(state.group!=="all" && !m.g.startsWith(state.group+"組"))return false;
+    if(state.free && !m.tv)return false;
+    if(state.dazn && m.tv)return false;
+    if(state.upcoming && m.d<TODAY)return false;
+    return true;
+  });
+  document.getElementById("count").innerHTML=
+    `全${rows.length}試合 ／ <span style="color:var(--gold);font-weight:800">無料${rows.filter(m=>m.tv).length}</span>`+
+    ` ／ <span style="color:var(--ink);font-weight:800">DAZN専用${rows.filter(m=>!m.tv).length}</span>`;
+  const app=document.getElementById("app");
+  if(!rows.length){app.innerHTML='<div class="empty">条件に合う試合がないわ。<br>フィルタを緩めてみて。</div>';return;}
+  // group by date
+  let html="",lastDay="",open=false;
+  for(const m of rows){
+    if(m.d!==lastDay){
+      if(open){html+="</div>";}            // close previous day's list
+      lastDay=m.d;open=true;
+      const [Y,Mo,Da]=m.d.split("-").map(Number);
+      const dow=DOW[new Date(Y,Mo-1,Da).getDay()];
+      const isToday=m.d===TODAY;
+      html+=`<div class="day${isToday?" today":""}">${Mo}月${Da}日<span class="dow">(${dow})</span>${isToday?'<span class="badge-today">今日</span>':''}</div><div class="list">`;
+    }
+    const isArg=state.fav&&(m.a===state.fav||m.b===state.fav);
+    const tvBadge=m.tv?`<span class="badge b-free">${m.tv} 無料</span>`:"";
+    const sc=getScore(m);
+    const snUrl=snGameUrl(m);
+    let scoreHtml="",ftBadge="";
+    if(sc){
+      const pk=sc.pk?`<span class="pk">PK ${sc.pk.h}-${sc.pk.a}</span>`:"";
+      if(snUrl){
+        scoreHtml=`<a class="score-link" href="${snUrl}" target="_blank" rel="noopener" title="長押しで試合詳細へ">${sc.h} - ${sc.a}${pk}</a>`;
+      }else{
+        scoreHtml=`<span class="score">${sc.h} - ${sc.a}${pk}</span>`;
+      }
+      ftBadge='<span class="badge b-ft">終了</span>';
+    }else if(snUrl){
+      // スコア未確定でもURLがあれば「詳細」リンクを出す
+      scoreHtml=`<a class="score-link preview" href="${snUrl}" target="_blank" rel="noopener">詳細↗</a>`;
+    }
+    html+=`<div class="match${m.tv?" free":""}${sc?" done":""}">
+      <div class="time">${m.t}<small>${m.v}</small></div>
+      <div class="info">
+        <div class="stage">${isArg?'<span class="arg">★ </span>':''}${m.g}</div>
+        <div class="teams">${teamCell(m.a)}<span class="vs">vs</span>${teamCell(m.b)}${scoreHtml}</div>
+        <div class="meta">${ftBadge}${tvBadge}<span class="badge b-dazn">DAZN</span></div>
+      </div></div>`;
+  }
+  if(open){html+="</div>";}                 // close final day's list
+  app.innerHTML=html;
+}
+document.getElementById("tabSchedule").addEventListener("click",()=>{
+  document.getElementById("tabSchedule").setAttribute("aria-pressed","true");
+  document.getElementById("tabStandings").setAttribute("aria-pressed","false");
+  document.getElementById("app").style.display="";
+  document.getElementById("scoreStatus").style.display="";
+  document.getElementById("squadLink").style.display="";
+  document.getElementById("standingsApp").style.display="none";
+});
+document.getElementById("tabStandings").addEventListener("click",()=>{
+  document.getElementById("tabSchedule").setAttribute("aria-pressed","false");
+  document.getElementById("tabStandings").setAttribute("aria-pressed","true");
+  document.getElementById("app").style.display="none";
+  document.getElementById("scoreStatus").style.display="none";
+  document.getElementById("squadLink").style.display="none";
+  document.getElementById("standingsApp").style.display="";
+  renderStandings();
+});
+
+render();
+fetchScores();
+document.getElementById("dataNote").innerHTML=
+ "※ スコアは openfootball（CC0）より取得。手動更新の“ゆる速報”で、反映に半日〜1日の遅れあり。<br>"+
+ "※ 決勝T以降の対戦カードは勝ち上がり次第。準決勝・3決・決勝はDAZNでも無料配信予定。";
+</script>
+</body>
+</html>

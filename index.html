@@ -131,6 +131,24 @@
   table.std-tbl tr.adv td.team-col{border-left:3px solid var(--pitch)}
   table.std-tbl td.pts{font-weight:800;color:var(--ink)}
   table.std-tbl td small{display:block;font-size:9px;color:var(--muted);font-weight:600;margin-top:1px}
+  table.std-tbl .next-col{font-size:18px}
+  table.std-tbl .next-done{font-size:13px;color:var(--pitch);font-weight:800}
+  /* ---- team match modal ---- */
+  .tm-overlay{position:fixed;inset:0;background:rgba(11,31,58,.55);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+  .tm-sheet{background:var(--paper);width:100%;max-width:640px;max-height:82vh;border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -8px 30px rgba(0,0,0,.25)}
+  .tm-head{display:flex;align-items:center;justify-content:space-between;padding:15px 16px;border-bottom:1px solid var(--line);font-size:16px;font-weight:800;color:var(--ink)}
+  .tm-close{background:var(--card);border:1px solid var(--line);border-radius:9px;width:34px;height:34px;font-size:15px;color:var(--muted);font-weight:700}
+  .tm-close:active{background:var(--line)}
+  .tm-body{overflow-y:auto;padding:10px 12px 24px}
+  .tm-match{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .tm-match .tm-meta{font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .tm-match .tm-row{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--ink)}
+  .tm-match .tm-vs{flex:1;display:flex;align-items:center;gap:6px}
+  .tm-match .tm-score{font-variant-numeric:tabular-nums;font-weight:800;font-size:17px;color:var(--ink)}
+  .tm-match .tm-soon{font-size:12px;color:var(--pitch-dk);font-weight:700}
+  .tm-match.is-self{border-color:var(--pitch);border-width:1.5px}
+  .std-tbl td.team-col{cursor:pointer}
+  .std-tbl td.team-col .tap{font-size:9px;color:var(--pitch);margin-left:3px;vertical-align:2px}
   .std-legend{font-size:10.5px;color:var(--muted);padding:8px 13px 10px}
   .std-note{font-size:11px;color:var(--muted);padding:0 12px 8px}
   #squadLink{padding:8px 12px 0}
@@ -198,6 +216,12 @@
 <div id="squadLink"></div>
 <div id="app"></div>
 <div id="standingsApp" style="display:none"></div>
+<div id="teamModal" class="tm-overlay" style="display:none">
+  <div class="tm-sheet">
+    <div class="tm-head"><span id="tmTitle"></span><button id="tmClose" class="tm-close">✕</button></div>
+    <div id="tmBody" class="tm-body"></div>
+  </div>
+</div>
 
 <div class="note" id="dataNote"></div>
 <footer>データ: ゲキサカ番組表より手起こし／放送は変更の可能性あり。最終確認は各局・FIFA公式で。</footer>
@@ -586,6 +610,19 @@ function buildStandings(){
     rows.sort((a,b)=> b.pts-a.pts || (b.gf-b.ga)-(a.gf-a.ga) || b.gf-a.gf || a.name.localeCompare(b.name,"ja"));
     result[gKey]=rows;
   }
+  // 各チームの「次の未消化試合」の相手を求める
+  for(const m of M){
+    if(m.s!=="gl")continue;
+    const gm=m.g.match(/^([A-L])組/);
+    if(!gm)continue;
+    if(getScore(m))continue; // 消化済みは飛ばす
+    const rows=result[gm[1]];
+    if(!rows)continue;
+    for(const[self,opp] of [[m.a,m.b],[m.b,m.a]]){
+      const row=rows.find(r=>r.name===self);
+      if(row&&!row.next){row.next=opp;row.nextDate=m.d+" "+m.t;}
+    }
+  }
   return result;
 }
 
@@ -599,22 +636,64 @@ function renderStandings(){
     const rows=data[gKey];
     html+=`<div class="std-group"><div class="std-head">${gKey}組</div>
       <table class="std-tbl"><thead><tr>
-        <th class="team-col">チーム</th><th>試</th><th>勝</th><th>分</th><th>負</th><th>得失</th><th>勝点</th>
+        <th class="team-col">チーム</th><th>試</th><th>勝</th><th>分</th><th>負</th><th>得失</th><th>勝点</th><th>次</th>
       </tr></thead><tbody>`;
     rows.forEach((r,i)=>{
       const gd=r.gf-r.ga;
       const gdStr=gd>0?`+${gd}`:`${gd}`;
+      const nextCell=r.next?`<span class="next-flag" title="次戦: ${r.next}">${F[r.next]||"–"}</span>`:`<span class="next-done" title="グループL終了">✓</span>`;
       html+=`<tr class="${i<2?"adv":""}">
-        <td class="team-col">${F[r.name]||""} ${r.name}</td>
+        <td class="team-col" data-team="${r.name}">${F[r.name]||""} ${r.name}<span class="tap">▶</span></td>
         <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td>
         <td>${gdStr}<small>(${r.gf}-${r.ga})</small></td><td class="pts">${r.pts}</td>
+        <td class="next-col">${nextCell}</td>
       </tr>`;
     });
     html+=`</tbody></table><div class="std-legend">緑＝決勝T進出圏内（1〜2位。3位通過は12組の成績比較で別途確定）</div></div>`;
   }
   html+='</div>';
   el.innerHTML=html;
+  el.querySelectorAll('td.team-col[data-team]').forEach(td=>{
+    td.addEventListener('click',()=>openTeamModal(td.getAttribute('data-team')));
+  });
 }
+
+// チームの全試合（結果＋予定）をモーダル表示
+function openTeamModal(team){
+  const list=M.filter(m=>m.a===team||m.b===team)
+    .slice().sort((a,b)=>(a.d+a.t).localeCompare(b.d+b.t));
+  const dow=["日","月","火","水","木","金","土"];
+  let html="";
+  for(const m of list){
+    const sc=getScore(m);
+    const opp=m.a===team?m.b:m.a;
+    const dt=new Date(m.d+"T00:00:00");
+    const dateStr=`${m.d.slice(5).replace("-","/")}(${dow[dt.getDay()]}) ${m.t}`;
+    const stageStr=m.g||(m.s==="gl"?"グループL":"決勝T");
+    let scoreHtml;
+    if(sc){
+      // sc.h=home(m.a) 視点。team視点に変換
+      const my=m.a===team?sc.h:sc.a, ot=m.a===team?sc.a:sc.h;
+      const mark=my>ot?'<span style="color:var(--pitch);font-weight:800">○</span>':my<ot?'<span style="color:#C0392B;font-weight:800">●</span>':'<span style="color:var(--muted);font-weight:800">△</span>';
+      scoreHtml=`<span class="tm-score">${my} - ${ot}</span> ${mark}`;
+    }else{
+      scoreHtml=`<span class="tm-soon">${m.t} 予定</span>`;
+    }
+    const snUrl=snGameUrl(m);
+    const oppCell=`${F[opp]||""} ${opp}`;
+    html+=`<div class="tm-match is-self">
+      <div class="tm-meta">${dateStr}・${stageStr}${m.v?"・"+m.v:""}</div>
+      <div class="tm-row">
+        <span class="tm-vs">vs ${oppCell}</span>
+        ${snUrl?`<a href="${snUrl}" target="_blank" rel="noopener" style="text-decoration:none">${scoreHtml}</a>`:scoreHtml}
+      </div>
+    </div>`;
+  }
+  document.getElementById("tmTitle").innerHTML=`${F[team]||""} ${team} の試合`;
+  document.getElementById("tmBody").innerHTML=html;
+  document.getElementById("teamModal").style.display="flex";
+}
+function closeTeamModal(){document.getElementById("teamModal").style.display="none";}
 
 // スポーツナビ W杯2026 選手名鑑URL（全48カ国確認済み）
 const BASE_SN="https://soccer.yahoo.co.jp/wcup/category/2026/teams/";
@@ -714,6 +793,11 @@ document.getElementById("tabStandings").addEventListener("click",()=>{
   document.getElementById("squadLink").style.display="none";
   document.getElementById("standingsApp").style.display="";
   renderStandings();
+});
+
+document.getElementById("tmClose").addEventListener("click",closeTeamModal);
+document.getElementById("teamModal").addEventListener("click",(e)=>{
+  if(e.target.id==="teamModal")closeTeamModal();
 });
 
 render();

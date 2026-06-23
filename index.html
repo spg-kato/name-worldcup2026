@@ -148,7 +148,9 @@
   .tm-match .tm-score{font-variant-numeric:tabular-nums;font-weight:800;font-size:17px;color:var(--ink)}
   .tm-match .tm-soon{font-size:12px;color:var(--pitch-dk);font-weight:700}
   .tm-match.is-self{border-color:var(--pitch);border-width:1.5px}
-  .std-tbl td.team-col{cursor:pointer}
+  .std-tbl td.team-col{cursor:pointer;white-space:nowrap}
+  table.std-tbl{table-layout:auto}
+  table.std-tbl td:not(.team-col),table.std-tbl th:not(.team-col){white-space:nowrap}
   .std-tbl td.team-col .tap{font-size:9px;color:var(--pitch);margin-left:3px;vertical-align:2px}
   .std-tbl td.team-col .frank{display:inline-block;font-size:9px;color:var(--muted);font-weight:600;margin-left:6px;background:rgba(11,31,58,.06);padding:1px 5px;border-radius:6px;vertical-align:1px}
   .std-legend{font-size:10.5px;color:var(--muted);padding:8px 13px 10px}
@@ -628,6 +630,9 @@ function buildStandings(){
   return result;
 }
 
+// 順位表で長い国名を短縮表示
+const SHORT_NAME={"ボスニア・ヘルツェゴビナ":"ボスニア","コンゴ民主共和国":"コンゴ民主"};
+function shortName(n){return SHORT_NAME[n]||n;}
 function renderStandings(){
   const el=document.getElementById("standingsApp");
   const data=buildStandings();
@@ -645,7 +650,7 @@ function renderStandings(){
       const gdStr=gd>0?`+${gd}`:`${gd}`;
       const nextCell=r.next?`<span class="next-flag" title="次戦: ${r.next}">${F[r.next]||"–"}</span>`:`<span class="next-done" title="グループL終了">✓</span>`;
       html+=`<tr class="${i<2?"adv":""}">
-        <td class="team-col" data-team="${r.name}">${F[r.name]||""} ${r.name}${FRANK[r.name]?`<small class="frank">世界${FRANK[r.name]}位</small>`:""}<span class="tap">▶</span></td>
+        <td class="team-col" data-team="${r.name}">${F[r.name]||""} ${shortName(r.name)}${FRANK[r.name]?`<small class="frank">世界${FRANK[r.name]}位</small>`:""}<span class="tap">▶</span></td>
         <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td>
         <td>${gdStr}<small>(${r.gf}-${r.ga})</small></td><td class="pts">${r.pts}</td>
         <td class="next-col">${nextCell}</td>

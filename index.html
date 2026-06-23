@@ -150,6 +150,7 @@
   .tm-match.is-self{border-color:var(--pitch);border-width:1.5px}
   .std-tbl td.team-col{cursor:pointer}
   .std-tbl td.team-col .tap{font-size:9px;color:var(--pitch);margin-left:3px;vertical-align:2px}
+  .std-tbl td.team-col .frank{display:inline-block;font-size:9px;color:var(--muted);font-weight:600;margin-left:6px;background:rgba(11,31,58,.06);padding:1px 5px;border-radius:6px;vertical-align:1px}
   .std-legend{font-size:10.5px;color:var(--muted);padding:8px 13px 10px}
   .std-note{font-size:11px;color:var(--muted);padding:0 12px 8px}
   #squadLink{padding:8px 12px 0}
@@ -644,7 +645,7 @@ function renderStandings(){
       const gdStr=gd>0?`+${gd}`:`${gd}`;
       const nextCell=r.next?`<span class="next-flag" title="次戦: ${r.next}">${F[r.next]||"–"}</span>`:`<span class="next-done" title="グループL終了">✓</span>`;
       html+=`<tr class="${i<2?"adv":""}">
-        <td class="team-col" data-team="${r.name}">${F[r.name]||""} ${r.name}<span class="tap">▶</span></td>
+        <td class="team-col" data-team="${r.name}">${F[r.name]||""} ${r.name}${FRANK[r.name]?`<small class="frank">世界${FRANK[r.name]}位</small>`:""}<span class="tap">▶</span></td>
         <td>${r.p}</td><td>${r.w}</td><td>${r.d}</td><td>${r.l}</td>
         <td>${gdStr}<small>(${r.gf}-${r.ga})</small></td><td class="pts">${r.pts}</td>
         <td class="next-col">${nextCell}</td>
@@ -698,6 +699,8 @@ function closeTeamModal(){document.getElementById("teamModal").style.display="no
 
 // スポーツナビ W杯2026 選手名鑑URL（全48カ国確認済み）
 const BASE_SN="https://soccer.yahoo.co.jp/wcup/category/2026/teams/";
+// FIFAランク（2026/6/11発表・大会中固定）
+const FRANK={"アルゼンチン":1,"フランス":2,"スペイン":3,"イングランド":4,"ブラジル":5,"モロッコ":6,"オランダ":7,"ドイツ":8,"ポルトガル":9,"ベルギー":10,"メキシコ":11,"コロンビア":12,"アメリカ":13,"クロアチア":15,"日本":16,"セネガル":17,"スイス":18,"ウルグアイ":19,"オーストリア":21,"イラン":22,"韓国":23,"オーストラリア":25,"エジプト":26,"ノルウェー":27,"カナダ":28,"アルジェリア":29,"エクアドル":30,"コートジボワール":31,"トルコ":32,"スウェーデン":36,"パラグアイ":37,"パナマ":40,"スコットランド":41,"コンゴ民主共和国":43,"チェコ":44,"ウズベキスタン":54,"カタール":57,"チュニジア":58,"サウジアラビア":59,"イラク":60,"南アフリカ":61,"カーボベルデ":63,"ボスニア・ヘルツェゴビナ":64,"ガーナ":65,"ヨルダン":68,"キュラソー":81,"ニュージーランド":84,"ハイチ":87};
 const SQUAD={
  "日本":142,"オランダ":205,"スウェーデン":263,"チュニジア":279,
  "ドイツ":65,"キュラソー":31781,"コートジボワール":30121,"エクアドル":75,

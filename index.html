@@ -151,12 +151,15 @@
 <div id="glResultsApp" style="display:none"></div>
 
 <div id="bkModal" style="display:none;position:fixed;inset:0;background:#000;z-index:100;display:none;flex-direction:column">
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(0,0,0,.9)">
-    <span style="color:#FFD700;font-weight:800;font-size:15px">🏆 トーナメント表</span>
-    <button onclick="closeBracket()" style="background:#fff;border:none;border-radius:8px;padding:5px 14px;font-weight:800;font-size:14px;cursor:pointer">✕ 閉じる</button>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(0,0,0,.9);gap:8px">
+    <div style="display:flex;gap:6px">
+      <button onclick="setBkW('900px','none')" id="bkBtn1" style="background:#fff;border:none;border-radius:8px;padding:5px 10px;font-weight:800;font-size:12px;cursor:pointer">拡大</button>
+      <button onclick="setBkW('100%','100%')" id="bkBtn2" style="background:#555;color:#fff;border:none;border-radius:8px;padding:5px 10px;font-weight:800;font-size:12px;cursor:pointer">全体</button>
+    </div>
+    <button onclick="closeBracket()" style="background:#fff;border:none;border-radius:8px;padding:5px 12px;font-weight:800;font-size:14px;cursor:pointer">✕</button>
   </div>
   <div style="overflow:auto;-webkit-overflow-scrolling:touch;flex:1">
-    <img src="./bracket2026.png" style="width:900px;max-width:none;display:block;padding:8px">
+    <img id="bkImg" src="./bracket2026.png" style="width:900px;max-width:none;display:block;padding:8px">
   </div>
 </div>
 <div id="teamModal" class="tm-overlay" style="display:none">
@@ -730,6 +733,15 @@ function showBracketImg(){
   const m=document.getElementById('bkModal');
   m.style.display='flex';
   document.body.style.overflow='hidden';
+  setBkW('900px','none');
+}
+function setBkW(w,mw){
+  const img=document.getElementById('bkImg');
+  img.style.width=w;img.style.maxWidth=mw;
+  document.getElementById('bkBtn1').style.background=w==='900px'?'#fff':'#555';
+  document.getElementById('bkBtn1').style.color=w==='900px'?'#000':'#fff';
+  document.getElementById('bkBtn2').style.background=w==='100%'?'#fff':'#555';
+  document.getElementById('bkBtn2').style.color=w==='100%'?'#000':'#fff';
 }
 function closeBracket(){
   document.getElementById('bkModal').style.display='none';

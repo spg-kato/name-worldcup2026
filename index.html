@@ -461,6 +461,20 @@ const ROUNDS=[
 
 function renderBracket(){
   const sl=buildBracket();
+  // 親試合の国旗をTBD表示に使うための逆引きマップ
+  const BFREV={};
+  for(const[src,[dst,pos]] of Object.entries(BFLOW)){
+    if(!BFREV[dst])BFREV[dst]={};
+    BFREV[dst][pos]=src;
+  }
+  function teamLabel(name,sid,pos){
+    if(F[name])return`${F[name]}<b>${name}</b>`;
+    // TBD → 親試合の国旗ペアを表示
+    const pid=BFREV[sid]&&BFREV[sid][pos];
+    const pm=pid&&sl[pid];
+    if(pm&&F[pm.a]&&F[pm.b])return`<span class="bk-tbd">${F[pm.a]}×${F[pm.b]}</span>`;
+    return`<span class="bk-tbd">${name}</span>`;
+  }
   let html='<div class="bk-wrap">';
   for(const{label,ids} of ROUNDS){
     html+=`<div class="bk-round-head">${label}</div>`;
@@ -468,8 +482,8 @@ function renderBracket(){
       const m=sl[id];if(!m)continue;
       const hl=hlClass(m);
       const sc=getScore(m);
-      const ta=F[m.a]?`${F[m.a]}<b>${m.a}</b>`:`<span class="bk-tbd">${m.a}</span>`;
-      const tb=F[m.b]?`${F[m.b]}<b>${m.b}</b>`:`<span class="bk-tbd">${m.b}</span>`;
+      const ta=teamLabel(m.a,id,'a');
+      const tb=teamLabel(m.b,id,'b');
       const[,Mo,Da]=m.d.split("-").map(Number);
       const snUrl=snGameUrl(m);
       let scHtml="";

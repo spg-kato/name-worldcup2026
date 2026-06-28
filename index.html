@@ -150,12 +150,14 @@
 <div id="koScheduleApp" style="display:none"></div>
 <div id="glResultsApp" style="display:none"></div>
 
-<div id="bkModal" style="display:none;position:fixed;inset:0;background:#0B1F3A;z-index:100;overflow:auto">
-  <div style="position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(11,31,58,.95);border-bottom:1px solid #2a4a7a">
+<div id="bkModal" style="display:none;position:fixed;inset:0;background:#000;z-index:100;display:none;flex-direction:column">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(0,0,0,.9)">
     <span style="color:#FFD700;font-weight:800;font-size:15px">🏆 トーナメント表</span>
-    <button onclick="closeBracket()" style="background:#fff;border:none;border-radius:8px;padding:5px 14px;font-weight:800;font-size:14px;cursor:pointer">✕</button>
+    <button onclick="closeBracket()" style="background:#fff;border:none;border-radius:8px;padding:5px 14px;font-weight:800;font-size:14px;cursor:pointer">✕ 閉じる</button>
   </div>
-  <div id="bkSVG" style="padding:8px;overflow-x:auto;-webkit-overflow-scrolling:touch"></div>
+  <div style="overflow:auto;-webkit-overflow-scrolling:touch;flex:1">
+    <img src="./bracket2026.png" style="width:900px;max-width:none;display:block;padding:8px">
+  </div>
 </div>
 <div id="teamModal" class="tm-overlay" style="display:none">
   <div class="tm-sheet">
@@ -482,7 +484,7 @@ function renderBracket(){
     if(pm&&F[pm.a]&&F[pm.b])return`<span class="bk-tbd">${SLOT_LABEL[pid]||''} ${F[pm.a]}×${F[pm.b]} の勝者</span>`;
     return`<span class="bk-tbd">${name}</span>`;
   }
-  let html='<div class="bk-wrap"><a href="./bracket2026.png" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;font-size:14px;font-weight:800;text-decoration:none;padding:12px;border-radius:12px;margin-bottom:14px">📊 トーナメント表（図）を見る ↗</a>';
+  let html='<div class="bk-wrap"><button onclick="showBracketImg()" style="width:100%;background:var(--ink);color:#fff;font-size:14px;font-weight:800;padding:12px;border:none;border-radius:12px;margin-bottom:14px;cursor:pointer">📊 トーナメント表（図）を見る</button>';
   for(const{label,ids} of ROUNDS){
     html+=`<div class="bk-round-head">${label}</div>`;
     for(const id of ids){
@@ -724,6 +726,11 @@ document.getElementById("tmClose").addEventListener("click",closeTeamModal);
 document.getElementById("teamModal").addEventListener("click",e=>{if(e.target.id==="teamModal")closeTeamModal();});
 
 
+function showBracketImg(){
+  const m=document.getElementById('bkModal');
+  m.style.display='flex';
+  document.body.style.overflow='hidden';
+}
 function closeBracket(){
   document.getElementById('bkModal').style.display='none';
   document.body.style.overflow='';

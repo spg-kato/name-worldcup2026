@@ -150,6 +150,13 @@
 <div id="koScheduleApp" style="display:none"></div>
 <div id="glResultsApp" style="display:none"></div>
 
+<div id="bkModal" style="display:none;position:fixed;inset:0;background:#0B1F3A;z-index:100;overflow:auto">
+  <div style="position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(11,31,58,.95);border-bottom:1px solid #2a4a7a">
+    <span style="color:#FFD700;font-weight:800;font-size:15px">🏆 トーナメント表</span>
+    <button onclick="closeBracket()" style="background:#fff;border:none;border-radius:8px;padding:5px 14px;font-weight:800;font-size:14px;cursor:pointer">✕</button>
+  </div>
+  <div id="bkSVG" style="padding:8px;overflow-x:auto;-webkit-overflow-scrolling:touch"></div>
+</div>
 <div id="teamModal" class="tm-overlay" style="display:none">
   <div class="tm-sheet">
     <div class="tm-head"><span id="tmTitle"></span><button id="tmClose" class="tm-close">✕</button></div>
@@ -475,7 +482,7 @@ function renderBracket(){
     if(pm&&F[pm.a]&&F[pm.b])return`<span class="bk-tbd">${SLOT_LABEL[pid]||''} ${F[pm.a]}×${F[pm.b]} の勝者</span>`;
     return`<span class="bk-tbd">${name}</span>`;
   }
-  let html='<div class="bk-wrap">';
+  let html='<div class="bk-wrap"><a href="./bracket2026.png" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;font-size:14px;font-weight:800;text-decoration:none;padding:12px;border-radius:12px;margin-bottom:14px">📊 トーナメント表（図）を見る ↗</a>';
   for(const{label,ids} of ROUNDS){
     html+=`<div class="bk-round-head">${label}</div>`;
     for(const id of ids){
@@ -715,6 +722,93 @@ document.getElementById("resetChip").addEventListener("click",()=>{
 });
 document.getElementById("tmClose").addEventListener("click",closeTeamModal);
 document.getElementById("teamModal").addEventListener("click",e=>{if(e.target.id==="teamModal")closeTeamModal();});
+
+
+function closeBracket(){
+  document.getElementById('bkModal').style.display='none';
+  document.body.style.overflow='';
+}
+function showBracket(){
+  const sl=buildBracket();
+  const W=1100,H=680,RH=H/16,CX=W/2;
+  const ABB={'ボスニア・ヘルツェゴビナ':'ボスニア','コンゴ民主共和国':'DRコンゴ','コートジボワール':'コートジ','カーボベルデ':'CPV'};
+  const ts=n=>!n?'-':(F[n]||'')+(ABB[n]||n);
+  const fc=n=>['日本','アルゼンチン'].includes(n)?'#FFD700':'#fff';
+  const ry=(mi,ti)=>(mi*2+ti)*RH+RH*.5;
+  const ym=mi=>(ry(mi,0)+ry(mi,1))*.5;
+  const r16y=ri=>(ym(ri*2)+ym(ri*2+1))*.5;
+  const qfy=qi=>(r16y(qi*2)+r16y(qi*2+1))*.5;
+  const sfY=(qfy(0)+qfy(1))*.5;
+  const ln=(x1,y1,x2,y2)=>`<line x1="${x1}" y1="${+y1.toFixed(1)}" x2="${x2}" y2="${+y2.toFixed(1)}" stroke="#2a4a7a" stroke-width="1.5"/>`;
+  const tx=(x,y,t,a,fill,fs)=>`<text x="${x}" y="${+y.toFixed(1)}" fill="${fill||'#fff'}" font-size="${fs||12}" text-anchor="${a||'start'}" dominant-baseline="middle">${t}</text>`;
+  const LS=['r32_3','r32_6','r32_1','r32_4','r32_12','r32_11','r32_10','r32_9'];
+  const RS=['r32_2','r32_5','r32_7','r32_8','r32_15','r32_14','r32_13','r32_16'];
+  const LR16=['r16_b','r16_a','r16_e','r16_f'],RR16=['r16_c','r16_d','r16_g','r16_h'];
+  const LQF=['qf_1','qf_2'],RQF=['qf_3','qf_4'];
+  // x座標
+  const L0=178,L1=180,L2=197,L3=202,L4=338,L5=341,L6=348,L7=435,L8=440,L9=447,L10=495,L11=500,L12=CX-18;
+  let s=`<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" style="background:#0B1F3A;font-family:-apple-system,sans-serif">`;
+  // ラウンドラベル
+  ['R32','R16','QF','SF'].forEach((lb,i)=>{
+    const xs=[5,208,352,449];
+    s+=tx(xs[i],10,lb,'start','#3a6090',10);
+    s+=tx(W-xs[i],10,lb,'end','#3a6090',10);
+  });
+  // 左R32
+  LS.forEach((sid,mi)=>{
+    const m=sl[sid];if(!m)return;
+    [m.a,m.b].forEach((n,ti)=>{const y=ry(mi,ti);s+=tx(L0,y,ts(n),'end',fc(n),12);s+=ln(L1,y,L2,y);});
+    const yc=ym(mi);s+=ln(L2,ry(mi,0),L2,ry(mi,1));s+=ln(L2,yc,L3,yc);
+  });
+  // 右R32
+  RS.forEach((sid,mi)=>{
+    const m=sl[sid];if(!m)return;
+    [m.a,m.b].forEach((n,ti)=>{const y=ry(mi,ti);s+=tx(W-L0,y,ts(n),'start',fc(n),12);s+=ln(W-L1,y,W-L2,y);});
+    const yc=ym(mi);s+=ln(W-L2,ry(mi,0),W-L2,ry(mi,1));s+=ln(W-L2,yc,W-L3,yc);
+  });
+  // 左R16
+  LR16.forEach((sid,ri)=>{
+    const m=sl[sid],y=r16y(ri);
+    if(m&&F[m.a])s+=tx(L4,y,ts(m.a),'end','#80b0e0',11);
+    s+=ln(L3,y,L4,y);s+=ln(L5,y,L6,y);
+  });
+  for(let q=0;q<2;q++){const ya=r16y(q*2),yb=r16y(q*2+1),yq=qfy(q);s+=ln(L6,ya,L6,yb);s+=ln(L6,yq,L7,yq);}
+  // 右R16
+  RR16.forEach((sid,ri)=>{
+    const m=sl[sid],y=r16y(ri);
+    if(m&&F[m.a])s+=tx(W-L4,y,ts(m.a),'start','#80b0e0',11);
+    s+=ln(W-L3,y,W-L4,y);s+=ln(W-L5,y,W-L6,y);
+  });
+  for(let q=0;q<2;q++){const ya=r16y(q*2),yb=r16y(q*2+1),yq=qfy(q);s+=ln(W-L6,ya,W-L6,yb);s+=ln(W-L6,yq,W-L7,yq);}
+  // 左QF
+  LQF.forEach((sid,qi)=>{
+    const m=sl[sid],y=qfy(qi);
+    if(m&&F[m.a])s+=tx(L7,y,ts(m.a),'end','#60a0d0',11);
+    s+=ln(L8,y,L9,y);
+  });
+  s+=ln(L9,qfy(0),L9,qfy(1));s+=ln(L9,sfY,L10,sfY);
+  // 右QF
+  RQF.forEach((sid,qi)=>{
+    const m=sl[sid],y=qfy(qi);
+    if(m&&F[m.a])s+=tx(W-L7,y,ts(m.a),'start','#60a0d0',11);
+    s+=ln(W-L8,y,W-L9,y);
+  });
+  s+=ln(W-L9,qfy(0),W-L9,qfy(1));s+=ln(W-L9,sfY,W-L10,sfY);
+  // SF→決勝
+  const sf1=sl.sf_1,sf2=sl.sf_2,fin=sl.final;
+  if(sf1&&F[sf1.a])s+=tx(L10,sfY,ts(sf1.a),'end','#4090c0',11);
+  if(sf2&&F[sf2.a])s+=tx(W-L10,sfY,ts(sf2.a),'start','#4090c0',11);
+  s+=ln(L11,sfY,L12,sfY);s+=ln(W-L11,sfY,W-L12,sfY);
+  // 決勝
+  s+=`<text x="${CX}" y="${sfY-22}" fill="#FFD700" font-size="16" font-weight="800" text-anchor="middle">🏆</text>`;
+  s+=`<text x="${CX}" y="${sfY+2}" fill="#FFD700" font-size="12" font-weight="800" text-anchor="middle" dominant-baseline="middle">${fin&&F[fin.a]?ts(fin.a):'?'}</text>`;
+  s+=`<text x="${CX}" y="${sfY+18}" fill="#888" font-size="10" text-anchor="middle">vs</text>`;
+  s+=`<text x="${CX}" y="${sfY+34}" fill="#FFD700" font-size="12" font-weight="800" text-anchor="middle" dominant-baseline="middle">${fin&&F[fin.b]?ts(fin.b):'?'}</text>`;
+  s+='</svg>';
+  document.getElementById('bkSVG').innerHTML=s;
+  document.getElementById('bkModal').style.display='block';
+  document.body.style.overflow='hidden';
+}
 
 // ---- Init ----
 switchTab("bracket");

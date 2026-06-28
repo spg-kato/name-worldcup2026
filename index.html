@@ -357,7 +357,7 @@ const SN_IDS_SLOT={
 
 function snGameUrl(m){
   const id=SN_IDS[pairKey(m.a,m.b)]||(m.slot&&SN_IDS_SLOT[m.slot]);
-  return id?`${BASE_SN_GAME}${id}/summary?gk=18`:null;
+  return id?`${BASE_SN_GAME}${id}/info?gk=18`:null;
 }
 
 let SCORES={};

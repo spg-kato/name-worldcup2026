@@ -472,7 +472,7 @@ function renderBracket(){
     // TBD → 親試合の国旗ペアを表示
     const pid=BFREV[sid]&&BFREV[sid][pos];
     const pm=pid&&sl[pid];
-    if(pm&&F[pm.a]&&F[pm.b])return`<span class="bk-tbd">${F[pm.a]}×${F[pm.b]}</span>`;
+    if(pm&&F[pm.a]&&F[pm.b])return`<span class="bk-tbd">${SLOT_LABEL[pid]||''} ${F[pm.a]}×${F[pm.b]} の勝者</span>`;
     return`<span class="bk-tbd">${name}</span>`;
   }
   let html='<div class="bk-wrap">';

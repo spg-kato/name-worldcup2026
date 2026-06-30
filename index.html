@@ -479,8 +479,21 @@ function renderBracket(){
     if(!BFREV[dst])BFREV[dst]={};
     BFREV[dst][pos]=src;
   }
-  function teamLabel(name,sid,pos){
-    if(F[name])return`${F[name]}<b>${name}</b>`;
+  function teamLabel(name,sid,pos,sc,oppHasFlag){
+    if(F[name]){
+      // 決着済みなら勝敗で見た目を変える
+      if(sc&&oppHasFlag){
+        const my=pos==='a'?sc.h:sc.a, ot=pos==='a'?sc.a:sc.h;
+        let won = my>ot;
+        if(my===ot && sc.pk){ // PK戦
+          const myPk=pos==='a'?sc.pk.h:sc.pk.a, otPk=pos==='a'?sc.pk.a:sc.pk.h;
+          won = myPk>otPk;
+        }
+        if(won)return`${F[name]}<b style="color:#fff">${name}</b><span style="color:var(--pitch);margin-left:4px;font-size:11px">✓</span>`;
+        return`${F[name]}<b style="color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-color:rgba(107,122,144,.5)">${name}</b>`;
+      }
+      return`${F[name]}<b>${name}</b>`;
+    }
     // TBD → 親試合の国旗ペアを表示
     const pid=BFREV[sid]&&BFREV[sid][pos];
     const pm=pid&&sl[pid];
@@ -494,19 +507,22 @@ function renderBracket(){
       const m=sl[id];if(!m)continue;
       const hl=hlClass(m);
       const sc=getScore(m);
-      const ta=teamLabel(m.a,id,'a');
-      const tb=teamLabel(m.b,id,'b');
+      const bothFlagged=F[m.a]&&F[m.b];
+      const ta=teamLabel(m.a,id,'a',sc,bothFlagged);
+      const tb=teamLabel(m.b,id,'b',sc,bothFlagged);
       const[,Mo,Da]=m.d.split("-").map(Number);
       const snUrl=snGameUrl(m);
       let scHtml="";
-      if(sc&&F[m.a]&&F[m.b]){
+      if(sc&&bothFlagged){
+        const pkStr=sc.pk?` <small style="font-size:10px;opacity:.8">PK${sc.pk.h}-${sc.pk.a}</small>`:"";
         scHtml=snUrl
-          ?`<a class="bk-score-link" href="${snUrl}" target="_blank" rel="noopener">${sc.h}-${sc.a}</a>`
-          :`<span class="bk-score">${sc.h}-${sc.a}</span>`;
+          ?`<a class="bk-score-link" href="${snUrl}" target="_blank" rel="noopener">${sc.h}-${sc.a}${pkStr}</a>`
+          :`<span class="bk-score">${sc.h}-${sc.a}${pkStr}</span>`;
       }
       const tag=hl==="jp"?"🇯🇵":hl?"⭐":"";
+      const doneBadge=sc&&bothFlagged?'<span style="font-size:10px;color:var(--muted);font-weight:700;margin-left:6px">終了</span>':"";
       html+=`<div class="bk-card${hl?" "+hl:""}" data-slot="${id}">
-        <div class="bk-slot">${SLOT_LABEL[id]||id}${tag?"&nbsp;"+tag:""}</div>
+        <div class="bk-slot">${SLOT_LABEL[id]||id}${tag?"&nbsp;"+tag:""}${doneBadge}</div>
         <div class="bk-teams">${ta}<span class="bk-vs">vs</span>${tb}${scHtml}</div>
         <div class="bk-meta">${Mo}/${Da} ${m.t}・${m.v}${m.tv?" 📺"+m.tv:""}</div>
       </div>`;

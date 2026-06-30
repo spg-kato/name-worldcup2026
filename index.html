@@ -489,7 +489,7 @@ function renderBracket(){
           const myPk=pos==='a'?sc.pk.h:sc.pk.a, otPk=pos==='a'?sc.pk.a:sc.pk.h;
           won = myPk>otPk;
         }
-        if(won)return`${F[name]}<b style="color:#fff">${name}</b><span style="color:var(--pitch);margin-left:4px;font-size:11px">✓</span>`;
+        if(won)return`${F[name]}<b style="color:var(--ink)">${name}</b><span style="color:var(--pitch);margin-left:4px;font-size:11px">✓</span>`;
         return`${F[name]}<b style="color:var(--muted);font-weight:600;text-decoration:line-through;text-decoration-color:rgba(107,122,144,.5)">${name}</b>`;
       }
       return`${F[name]}<b>${name}</b>`;

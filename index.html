@@ -360,9 +360,15 @@ function snGameUrl(m){
   return id?`${BASE_SN_GAME}${id}/info?gk=18`:null;
 }
 
+// 手動スコア補正（openfootball誤りの場合に上書き）
+const SCORE_OVERRIDE={
+  "ベルギー|セネガル":{t1:"ベルギー",t2:"セネガル",g1:3,g2:2}
+};
+
 let SCORES={};
 function getScore(m){
-  const r=SCORES[pairKey(m.a,m.b)];
+  const k=pairKey(m.a,m.b);
+  const r=SCORE_OVERRIDE[k]||SCORES[k];
   if(!r)return null;
   if(r.t1===m.a)return{h:r.g1,a:r.g2,pk:r.pk?{h:r.pk1,a:r.pk2}:null};
   return{h:r.g2,a:r.g1,pk:r.pk?{h:r.pk2,a:r.pk1}:null};

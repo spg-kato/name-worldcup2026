@@ -129,12 +129,17 @@
 </header>
 
 <div class="viewtabs">
-  <button class="vtab" id="tabBracket" aria-pressed="true">🏆 トーナメント</button>
-  <button class="vtab" id="tabSchedule" aria-pressed="false">📺 番組表</button>
+  <button class="vtab" id="tabSchedule" aria-pressed="true">📺 番組表</button>
+  <button class="vtab" id="tabBracket" aria-pressed="false">🏆 トーナメント</button>
   <button class="vtab" id="tabGL" aria-pressed="false">📊 GL結果</button>
 </div>
 
 <div class="controls" id="koControls" style="display:none">
+  <div class="toggles" style="margin-bottom:6px">
+    <button class="chip" onclick="setKoRound('r16')" id="kor_r16" aria-pressed="true">R16以降</button>
+    <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="false">QF以降</button>
+    <button class="chip" onclick="setKoRound('r32')" id="kor_r32" aria-pressed="false">R32</button>
+  </div>
   <div class="toggles">
     <button class="chip reset" id="resetChip">全試合</button>
     <button class="chip gold" id="freeChip" aria-pressed="false">無料のみ</button>
@@ -147,10 +152,9 @@
 
 <div id="scoreStatus"></div>
 <div id="bkFilter" style="display:flex;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
-  <button class="chip reset" onclick="setBkFilter('all')" id="bkf_all">全て</button>
-  <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32">R32</button>
-  <button class="chip" onclick="setBkFilter('r16')" id="bkf_r16">R16</button>
-  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf">QF以降</button>
+  <button class="chip" onclick="setBkFilter('r16')" id="bkf_r16" aria-pressed="true">R16以降</button>
+  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="false">QF以降</button>
+  <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32" aria-pressed="false">R32</button>
 </div>
 <div id="bracketApp"></div>
 <div id="koScheduleApp" style="display:none"></div>
@@ -567,8 +571,16 @@ function jumpToKO(slot){
 }
 
 // ---- KO Schedule ----
-const koState={free:false,upcoming:false,fav:null};
+const koState={free:false,upcoming:false,fav:null,round:'r16'};
 const QUICK=[["jpnChip","日本"],["argChip","アルゼンチン"]];
+function setKoRound(r){
+  koState.round=r;
+  ['r16','qf','r32'].forEach(k=>{
+    const el=document.getElementById('kor_'+k);
+    if(el)el.setAttribute('aria-pressed',k===r);
+  });
+  renderKOSchedule();
+}
 function syncKOQuick(){QUICK.forEach(([id,name])=>document.getElementById(id).setAttribute("aria-pressed",koState.fav===name));}
 
 function teamCell(name){
@@ -585,6 +597,10 @@ function renderKOSchedule(){
     if(!m.slot||!bk[m.slot])return m;
     return{...m,a:bk[m.slot].a,b:bk[m.slot].b};
   });
+  // ラウンドフィルター
+  if(koState.round==='r32')rows=rows.filter(m=>m.slot&&m.slot.startsWith('r32'));
+  else if(koState.round==='qf')rows=rows.filter(m=>m.slot&&!m.slot.startsWith('r32')&&!m.slot.startsWith('r16'));
+  else rows=rows.filter(m=>m.slot&&!m.slot.startsWith('r32')); // r16以降
   if(koState.free)rows=rows.filter(m=>m.tv);
   if(koState.upcoming)rows=rows.filter(m=>m.d>=TODAY);
   if(koState.fav)rows=rows.filter(m=>m.a===koState.fav||m.b===koState.fav);
@@ -869,17 +885,18 @@ function showBracket(){
 }
 
 
-let bkFilter='all';
+let bkFilter='r16';
 function setBkFilter(f){
   bkFilter=f;
-  ['all','r32','r16','qf','sf'].forEach(k=>{
+  ['r16','qf','r32'].forEach(k=>{
     const el=document.getElementById('bkf_'+k);
     if(el)el.setAttribute('aria-pressed',k===f);
   });
   renderBracket();
 }
 // ---- Init ----
-switchTab("bracket");
+switchTab("schedule");
+setKoRound("r16");
 fetchScores();
 document.getElementById("dataNote").innerHTML=
  "※ スコアは openfootball（CC0）より取得。手動更新の\u300cゆる速報\u300dで反映に遅れあり。<br>"+

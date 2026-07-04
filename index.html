@@ -151,7 +151,7 @@
 </div>
 
 <div id="scoreStatus"></div>
-<div id="bkFilter" style="display:flex;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
+<div id="bkFilter" style="display:none;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
   <button class="chip" onclick="setBkFilter('r16')" id="bkf_r16" aria-pressed="true">R16以降</button>
   <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="false">QF以降</button>
   <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32" aria-pressed="false">R32</button>
@@ -751,6 +751,7 @@ function switchTab(tab){
   document.getElementById("glResultsApp").style.display=tab==="gl"?"":"none";
   document.getElementById("koControls").style.display=tab==="schedule"?"":"none";
   document.getElementById("scoreStatus").style.display=tab==="gl"?"none":"";
+  document.getElementById('bkFilter').style.display=tab==='bracket'?'flex':'none';
   if(tab==="bracket")renderBracket();
   if(tab==="schedule")renderKOSchedule();
   if(tab==="gl")renderGLResults();

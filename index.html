@@ -146,6 +146,13 @@
 </div>
 
 <div id="scoreStatus"></div>
+<div id="bkFilter" style="display:flex;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
+  <button class="chip reset" onclick="setBkFilter('all')" id="bkf_all">全て</button>
+  <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32">R32</button>
+  <button class="chip" onclick="setBkFilter('r16')" id="bkf_r16">R16</button>
+  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf">準々決勝</button>
+  <button class="chip" onclick="setBkFilter('sf')" id="bkf_sf">準決勝〜</button>
+</div>
 <div id="bracketApp"></div>
 <div id="koScheduleApp" style="display:none"></div>
 <div id="glResultsApp" style="display:none"></div>
@@ -513,6 +520,10 @@ function renderBracket(){
   for(const{label,ids} of ROUNDS){
     html+=`<div class="bk-round-head">${label}</div>`;
     for(const id of ids){
+      if(bkFilter!=='all'){
+        const rnd=id.startsWith('r32')?'r32':id.startsWith('r16')?'r16':id.startsWith('qf')?'qf':'sf';
+        if(rnd!==bkFilter)continue;
+      }
       const m=sl[id];if(!m)continue;
       const hl=hlClass(m);
       const sc=getScore(m);
@@ -854,6 +865,16 @@ function showBracket(){
   document.body.style.overflow='hidden';
 }
 
+
+let bkFilter='all';
+function setBkFilter(f){
+  bkFilter=f;
+  ['all','r32','r16','qf','sf'].forEach(k=>{
+    const el=document.getElementById('bkf_'+k);
+    if(el)el.setAttribute('aria-pressed',k===f);
+  });
+  renderBracket();
+}
 // ---- Init ----
 switchTab("bracket");
 fetchScores();

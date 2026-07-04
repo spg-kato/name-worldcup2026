@@ -144,8 +144,9 @@
     <button class="chip reset" id="resetChip">全試合</button>
     <button class="chip gold" id="freeChip" aria-pressed="false">無料のみ</button>
     <button class="chip" id="upcomingChip" aria-pressed="false">今日以降</button>
-    <button class="chip jp" id="jpnChip" aria-pressed="false">🇯🇵 日本</button>
     <button class="chip jp" id="argChip" aria-pressed="false">🇦🇷 アルゼンチン</button>
+    <button class="chip jp" id="fraChip" aria-pressed="false">🇫🇷 フランス</button>
+    <button class="chip jp" id="espChip" aria-pressed="false">🇪🇸 スペイン</button>
     <span class="count" id="count"></span>
   </div>
 </div>
@@ -572,7 +573,7 @@ function jumpToKO(slot){
 
 // ---- KO Schedule ----
 const koState={free:false,upcoming:false,fav:null,round:'r16'};
-const QUICK=[["jpnChip","日本"],["argChip","アルゼンチン"]];
+const QUICK=[["argChip","アルゼンチン"],["fraChip","フランス"],["espChip","スペイン"]];
 function setKoRound(r){
   koState.round=r;
   ['r16','qf','r32'].forEach(k=>{

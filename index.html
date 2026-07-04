@@ -524,7 +524,7 @@ function renderBracket(){
     const visIds=ids.filter(id=>{
       if(bkFilter==='all')return true;
       if(bkFilter==='r32')return id.startsWith('r32');
-      if(bkFilter==='r16')return id.startsWith('r16');
+      if(bkFilter==='r16')return !id.startsWith('r32'); // R16以降全部
       if(bkFilter==='qf')return !id.startsWith('r32')&&!id.startsWith('r16');
       return true;
     });

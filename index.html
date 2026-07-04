@@ -362,7 +362,8 @@ function snGameUrl(m){
 
 // 手動スコア補正（openfootball誤りの場合に上書き）
 const SCORE_OVERRIDE={
-  "セネガル|ベルギー":{t1:"ベルギー",t2:"セネガル",g1:3,g2:2}
+  "セネガル|ベルギー":{t1:"ベルギー",t2:"セネガル",g1:3,g2:2},
+  "アルゼンチン|カーボベルデ":{t1:"アルゼンチン",t2:"カーボベルデ",g1:3,g2:2}
 };
 
 let SCORES={};
@@ -388,7 +389,9 @@ async function fetchScores(){
       if(!jp1||!jp2)continue;
       const ft=mt.score&&mt.score.ft;
       if(!ft||ft.length<2)continue;
-      const rec={t1:jp1,t2:jp2,g1:ft[0],g2:ft[1]};
+      const et=mt.score.et; // 延長戦スコア
+      const finalScore=(et&&et.length>=2)?et:ft; // ETがあればETを使う
+      const rec={t1:jp1,t2:jp2,g1:finalScore[0],g2:finalScore[1]};
       if(mt.score.p&&mt.score.p.length>=2){rec.pk=true;rec.pk1=mt.score.p[0];rec.pk2=mt.score.p[1];}
       map[pairKey(jp1,jp2)]=rec;n++;
     }

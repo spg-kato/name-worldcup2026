@@ -136,7 +136,7 @@
 
 <div class="controls" id="koControls" style="display:none">
   <div class="toggles" style="margin-bottom:6px">
-    <button class="chip" onclick="setKoRound('r16')" id="kor_r16" aria-pressed="true">R16以降</button>
+    <button class="chip" onclick="setKoRound('sf')" id="kor_sf" aria-pressed="true">SF以降</button>
     <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="false">QF以降</button>
     <button class="chip" onclick="setKoRound('r32')" id="kor_r32" aria-pressed="false">R32</button>
   </div>
@@ -153,7 +153,7 @@
 
 <div id="scoreStatus"></div>
 <div id="bkFilter" style="display:none;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
-  <button class="chip" onclick="setBkFilter('r16')" id="bkf_r16" aria-pressed="true">R16以降</button>
+  <button class="chip" onclick="setBkFilter('sf')" id="bkf_sf" aria-pressed="true">SF以降</button>
   <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="false">QF以降</button>
   <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32" aria-pressed="false">R32</button>
 </div>
@@ -525,8 +525,9 @@ function renderBracket(){
     const visIds=ids.filter(id=>{
       if(bkFilter==='all')return true;
       if(bkFilter==='r32')return id.startsWith('r32');
-      if(bkFilter==='r16')return !id.startsWith('r32'); // R16以降全部
+      if(bkFilter==='r16')return !id.startsWith('r32');
       if(bkFilter==='qf')return !id.startsWith('r32')&&!id.startsWith('r16');
+      if(bkFilter==='sf')return id.startsWith('sf')||id==='third'||id==='final';
       return true;
     });
     if(visIds.length===0)continue;
@@ -572,11 +573,11 @@ function jumpToKO(slot){
 }
 
 // ---- KO Schedule ----
-const koState={free:false,upcoming:false,fav:null,round:'r16'};
+const koState={free:false,upcoming:false,fav:null,round:'sf'};
 const QUICK=[["argChip","アルゼンチン"],["fraChip","フランス"],["espChip","スペイン"]];
 function setKoRound(r){
   koState.round=r;
-  ['r16','qf','r32'].forEach(k=>{
+  ['sf','qf','r32'].forEach(k=>{
     const el=document.getElementById('kor_'+k);
     if(el)el.setAttribute('aria-pressed',k===r);
   });
@@ -601,6 +602,7 @@ function renderKOSchedule(){
   // ラウンドフィルター
   if(koState.round==='r32')rows=rows.filter(m=>m.slot&&m.slot.startsWith('r32'));
   else if(koState.round==='qf')rows=rows.filter(m=>m.slot&&!m.slot.startsWith('r32')&&!m.slot.startsWith('r16'));
+  else if(koState.round==='sf')rows=rows.filter(m=>m.slot&&(m.slot.startsWith('sf')||m.slot==='third'||m.slot==='final'));
   else rows=rows.filter(m=>m.slot&&!m.slot.startsWith('r32')); // r16以降
   if(koState.free)rows=rows.filter(m=>m.tv);
   if(koState.upcoming)rows=rows.filter(m=>m.d>=TODAY);
@@ -887,10 +889,10 @@ function showBracket(){
 }
 
 
-let bkFilter='r16';
+let bkFilter='sf';
 function setBkFilter(f){
   bkFilter=f;
-  ['r16','qf','r32'].forEach(k=>{
+  ['sf','qf','r32'].forEach(k=>{
     const el=document.getElementById('bkf_'+k);
     if(el)el.setAttribute('aria-pressed',k===f);
   });
@@ -898,7 +900,7 @@ function setBkFilter(f){
 }
 // ---- Init ----
 switchTab("schedule");
-setKoRound("r16");
+setKoRound("sf");
 fetchScores();
 document.getElementById("dataNote").innerHTML=
  "※ スコアは openfootball（CC0）より取得。手動更新の\u300cゆる速報\u300dで反映に遅れあり。<br>"+

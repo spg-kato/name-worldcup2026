@@ -136,8 +136,8 @@
 
 <div class="controls" id="koControls" style="display:none">
   <div class="toggles" style="margin-bottom:6px">
-    <button class="chip" onclick="setKoRound('sf')" id="kor_sf" aria-pressed="false">SF以降</button>
-    <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="true">QF以降</button>
+    <button class="chip" onclick="setKoRound('sf')" id="kor_sf" aria-pressed="true">SF以降</button>
+    <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="false">QF以降</button>
     <button class="chip" onclick="setKoRound('r32')" id="kor_r32" aria-pressed="false">R32</button>
   </div>
   <div class="toggles">
@@ -153,8 +153,8 @@
 
 <div id="scoreStatus"></div>
 <div id="bkFilter" style="display:none;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
-  <button class="chip" onclick="setBkFilter('sf')" id="bkf_sf" aria-pressed="false">SF以降</button>
-  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="true">QF以降</button>
+  <button class="chip" onclick="setBkFilter('sf')" id="bkf_sf" aria-pressed="true">SF以降</button>
+  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="false">QF以降</button>
   <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32" aria-pressed="false">R32</button>
 </div>
 <div id="bracketApp"></div>
@@ -363,7 +363,10 @@ const SN_IDS_SLOT={
  "r32_9":"2026070103","r32_10":"2026070102","r32_11":"2026070202","r32_12":"2026070201",
  "r32_13":"2026070203","r32_14":"2026070303","r32_15":"2026070301","r32_16":"2026070302",
  "r16_a":"2026070402","r16_b":"2026070401","r16_c":"2026070501","r16_d":"2026070502",
- "r16_e":"2026070601","r16_f":"2026070602","r16_g":"2026070701","r16_h":"2026070702"
+ "r16_e":"2026070601","r16_f":"2026070602","r16_g":"2026070701","r16_h":"2026070702",
+ "qf_1":"2026070901","qf_2":"2026071001","qf_3":"2026071101","qf_4":"2026071102",
+ "sf_1":"2026071401","sf_2":"2026071501",
+ "third":"2026071801","final":"2026071901"
 };
 
 function snGameUrl(m){
@@ -573,7 +576,7 @@ function jumpToKO(slot){
 }
 
 // ---- KO Schedule ----
-const koState={free:false,upcoming:false,fav:null,round:'qf'};
+const koState={free:false,upcoming:false,fav:null,round:'sf'};
 const QUICK=[["argChip","アルゼンチン"],["fraChip","フランス"],["espChip","スペイン"]];
 function setKoRound(r){
   koState.round=r;
@@ -889,7 +892,7 @@ function showBracket(){
 }
 
 
-let bkFilter='qf';
+let bkFilter='sf';
 function setBkFilter(f){
   bkFilter=f;
   ['sf','qf','r32'].forEach(k=>{
@@ -900,7 +903,7 @@ function setBkFilter(f){
 }
 // ---- Init ----
 switchTab("schedule");
-setKoRound("qf");
+setKoRound("sf");
 fetchScores();
 document.getElementById("dataNote").innerHTML=
  "※ スコアは openfootball（CC0）より取得。手動更新の\u300cゆる速報\u300dで反映に遅れあり。<br>"+

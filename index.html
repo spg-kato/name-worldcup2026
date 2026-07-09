@@ -576,7 +576,7 @@ function jumpToKO(slot){
 }
 
 // ---- KO Schedule ----
-const koState={free:false,upcoming:false,fav:null,round:'sf'};
+const koState={free:false,upcoming:false,fav:null,round:'qf'};
 const QUICK=[["argChip","アルゼンチン"],["fraChip","フランス"],["espChip","スペイン"]];
 function setKoRound(r){
   koState.round=r;
@@ -892,7 +892,7 @@ function showBracket(){
 }
 
 
-let bkFilter='sf';
+let bkFilter='qf';
 function setBkFilter(f){
   bkFilter=f;
   ['sf','qf','r32'].forEach(k=>{
@@ -903,7 +903,7 @@ function setBkFilter(f){
 }
 // ---- Init ----
 switchTab("schedule");
-setKoRound("sf");
+setKoRound("qf");
 fetchScores();
 document.getElementById("dataNote").innerHTML=
  "※ スコアは openfootball（CC0）より取得。手動更新の\u300cゆる速報\u300dで反映に遅れあり。<br>"+

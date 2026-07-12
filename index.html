@@ -136,8 +136,8 @@
 
 <div class="controls" id="koControls" style="display:none">
   <div class="toggles" style="margin-bottom:6px">
-    <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="true">QF以降</button>
-    <button class="chip" onclick="setKoRound('sf')" id="kor_sf" aria-pressed="false">SF以降</button>
+    <button class="chip" onclick="setKoRound('sf')" id="kor_sf" aria-pressed="true">SF以降</button>
+    <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="false">QF以降</button>
     <button class="chip" onclick="setKoRound('r32')" id="kor_r32" aria-pressed="false">R32</button>
   </div>
   <div class="toggles">
@@ -153,8 +153,8 @@
 
 <div id="scoreStatus"></div>
 <div id="bkFilter" style="display:none;gap:6px;flex-wrap:wrap;padding:10px 12px 0;background:var(--paper)">
-  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="true">QF以降</button>
-  <button class="chip" onclick="setBkFilter('sf')" id="bkf_sf" aria-pressed="false">SF以降</button>
+  <button class="chip" onclick="setBkFilter('sf')" id="bkf_sf" aria-pressed="true">SF以降</button>
+  <button class="chip" onclick="setBkFilter('qf')" id="bkf_qf" aria-pressed="false">QF以降</button>
   <button class="chip" onclick="setBkFilter('r32')" id="bkf_r32" aria-pressed="false">R32</button>
 </div>
 <div id="bracketApp"></div>
@@ -576,7 +576,7 @@ function jumpToKO(slot){
 }
 
 // ---- KO Schedule ----
-const koState={free:false,upcoming:false,fav:null,round:'qf'};
+const koState={free:false,upcoming:false,fav:null,round:'sf'};
 const QUICK=[["argChip","アルゼンチン"],["fraChip","フランス"],["espChip","スペイン"]];
 function setKoRound(r){
   koState.round=r;
@@ -892,7 +892,7 @@ function showBracket(){
 }
 
 
-let bkFilter='qf';
+let bkFilter='sf';
 function setBkFilter(f){
   bkFilter=f;
   ['sf','qf','r32'].forEach(k=>{
@@ -903,7 +903,7 @@ function setBkFilter(f){
 }
 // ---- Init ----
 switchTab("schedule");
-setKoRound("qf");
+setKoRound("sf");
 fetchScores();
 document.getElementById("dataNote").innerHTML=
  "※ スコアは openfootball（CC0）より取得。手動更新の\u300cゆる速報\u300dで反映に遅れあり。<br>"+

@@ -135,20 +135,13 @@
 </div>
 
 <div class="controls" id="koControls" style="display:none">
-  <div class="toggles" style="margin-bottom:6px">
+  <div class="toggles">
     <button class="chip" onclick="setKoRound('sf')" id="kor_sf" aria-pressed="true">SF以降</button>
     <button class="chip" onclick="setKoRound('qf')" id="kor_qf" aria-pressed="false">QF以降</button>
     <button class="chip" onclick="setKoRound('r32')" id="kor_r32" aria-pressed="false">R32</button>
-  </div>
-  <div class="toggles">
-    <button class="chip reset" id="resetChip">全試合</button>
-    <button class="chip gold" id="freeChip" aria-pressed="false">無料のみ</button>
-    <button class="chip" id="upcomingChip" aria-pressed="false">今日以降</button>
-    <button class="chip jp" id="argChip" aria-pressed="false">🇦🇷 アルゼンチン</button>
-    <button class="chip jp" id="fraChip" aria-pressed="false">🇫🇷 フランス</button>
-    <button class="chip jp" id="espChip" aria-pressed="false">🇪🇸 スペイン</button>
     <span class="count" id="count"></span>
   </div>
+  <div style="font-size:12px;font-weight:700;color:#00A85A;padding:6px 2px 0">⭐ 準決勝以降はDAZNアカウントで無料視聴可</div>
 </div>
 
 <div id="scoreStatus"></div>
@@ -577,7 +570,7 @@ function jumpToKO(slot){
 
 // ---- KO Schedule ----
 const koState={free:false,upcoming:false,fav:null,round:'sf'};
-const QUICK=[["argChip","アルゼンチン"],["fraChip","フランス"],["espChip","スペイン"]];
+const QUICK=[];
 function setKoRound(r){
   koState.round=r;
   ['sf','qf','r32'].forEach(k=>{
@@ -607,9 +600,7 @@ function renderKOSchedule(){
   else if(koState.round==='qf')rows=rows.filter(m=>m.slot&&!m.slot.startsWith('r32')&&!m.slot.startsWith('r16'));
   else if(koState.round==='sf')rows=rows.filter(m=>m.slot&&(m.slot.startsWith('sf')||m.slot==='third'||m.slot==='final'));
   else rows=rows.filter(m=>m.slot&&!m.slot.startsWith('r32')); // r16以降
-  if(koState.free)rows=rows.filter(m=>m.tv);
-  if(koState.upcoming)rows=rows.filter(m=>m.d>=TODAY);
-  if(koState.fav)rows=rows.filter(m=>m.a===koState.fav||m.b===koState.fav);
+  // (フィルター削除済み)
   document.getElementById("count").textContent=`全${rows.length}試合 / 無料${rows.filter(m=>m.tv).length}`;
   const app=document.getElementById("koScheduleApp");
   if(!rows.length){app.innerHTML='<div class="empty">条件に合う試合なし</div>';return;}
@@ -768,25 +759,14 @@ document.getElementById("tabBracket").addEventListener("click",()=>switchTab("br
 document.getElementById("tabSchedule").addEventListener("click",()=>switchTab("schedule"));
 document.getElementById("tabGL").addEventListener("click",()=>switchTab("gl"));
 
-["freeChip","upcomingChip"].forEach(id=>{
-  document.getElementById(id).addEventListener("click",()=>{
-    const key=id==="freeChip"?"free":"upcoming";
-    koState[key]=!koState[key];
-    document.getElementById(id).setAttribute("aria-pressed",koState[key]);
-    renderKOSchedule();
-  });
-});
+// freeChip/upcomingChip removed
 QUICK.forEach(([id,name])=>{
   document.getElementById(id).addEventListener("click",()=>{
     koState.fav=koState.fav===name?null:name;
     syncKOQuick();renderKOSchedule();
   });
 });
-document.getElementById("resetChip").addEventListener("click",()=>{
-  Object.assign(koState,{free:false,upcoming:false,fav:null});
-  ["freeChip","upcomingChip"].forEach(id=>document.getElementById(id).setAttribute("aria-pressed",false));
-  syncKOQuick();renderKOSchedule();
-});
+// resetChip removed
 document.getElementById("tmClose").addEventListener("click",closeTeamModal);
 document.getElementById("teamModal").addEventListener("click",e=>{if(e.target.id==="teamModal")closeTeamModal();});
 
